@@ -10,7 +10,7 @@
                 return (
                     "<div class='outercard'>" +
                     "<div class='innercard'>" +
-                    input +
+                    "<div class='eventinfo' id='einfo'></div>" +
                     "</div>" +
                     "</div>"
                 )
@@ -22,9 +22,8 @@
 
           $("#frm").on('input', function(){
               var input=$("#inpt").val();
-              var data=$().load("ta28.azurewebsites.com/events");
-              console.log(JSON.stringify(data));
-              $("#outercanvas").html(create_card(data));
+              $("#outercanvas").html(create_card("TRUE"));
+              var data=$("#einfo").load("/events");
 
               }
           )
