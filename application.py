@@ -4,6 +4,11 @@ from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
+@app.route('/cardcanvas')
+def cardcanvas():
+    tests = ["test1", "test2"]
+    return render_template("cardcanvas.html", tests=tests)
+
 
 app.config['MYSQL_HOST'] = 'ta28.mysql.database.azure.com'
 app.config['MYSQL_USER'] = 'ta28'

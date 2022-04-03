@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cardcanvas</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        function create_card(input){
+            if (input != undefined) {
+                return (
+                    "<div class='outercard'>" +
+                    "<div class='innercard'>" +
+                    input +
+                    "</div>" +
+                    "</div>"
+                )
+            }
+        }
+    </script>
+    <script>
+      $(document).ready(function(){
+
+          $("#frm").on('input', function(){
+              var input=$("#inpt").val();
+
+              $("#outercanvas").html(create_card(input));
+
+              }
+          )
+
+
+    });
+    </script>
+    <style>
+        #outercanvas {
+            height: 2000px;
+            width: 100%;
+            background-color: coral;
+            padding-top: 10px;
+
+        }
+
+        .outercard {
+            margin: auto;
+            height: 100px;
+            width: 96%;
+            border-radius: 10px;
+            background-color: aquamarine;
+            padding: 8px;
+        }
+
+        .innercard {
+            height: 100px;
+            width: 100%;
+            border-radius: 5px;
+            background-color: aliceblue;
+        }
+
+        .outercard::before(
+
+        )
+    </style>
+</head>
+<body>
+<form id="frm">
+    <input type="text" id="inpt">
+</form>
+<div class="canvas" id="outercanvas">
+</div>
+</body>
+</html>
