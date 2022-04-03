@@ -6,8 +6,7 @@ app = Flask(__name__)
 
 @app.route('/cardcanvas')
 def cardcanvas():
-    tests = ["test1", "test2"]
-    return render_template("cardcanvas.html", tests=tests)
+    return render_template("cardcanvas.html")
 
 
 app.config['MYSQL_HOST'] = 'ta28.mysql.database.azure.com'

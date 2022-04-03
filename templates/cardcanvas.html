@@ -6,7 +6,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
         function create_card(input){
-            if (input != undefined) {
+            if (input !== undefined) {
                 return (
                     "<div class='outercard'>" +
                     "<div class='innercard'>" +
@@ -22,8 +22,9 @@
 
           $("#frm").on('input', function(){
               var input=$("#inpt").val();
-
-              $("#outercanvas").html(create_card(input));
+              var data=$().load("ta28.azurewebsites.com/events");
+              console.log(JSON.stringify(data));
+              $("#outercanvas").html(create_card(data));
 
               }
           )
@@ -56,9 +57,6 @@
             background-color: aliceblue;
         }
 
-        .outercard::before(
-
-        )
     </style>
 </head>
 <body>
