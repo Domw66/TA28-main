@@ -28,7 +28,7 @@ def getEvents():
     FROM events e, activities a, locations l 
     where e.activity_id = a.activity_id and e.location_id = l.location_id"""
     for key, value in request.args.items():
-        query += f" and {key}='{value}'"
+        query += f" and {key} in {value.replace('[', '(').replace(']', ')')}"
     query += ";"
     print(query)
     cur = mysql.connection.cursor()

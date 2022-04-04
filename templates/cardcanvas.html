@@ -6,31 +6,46 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
         function create_card(item){
-            console.log(item);
             if (item !== undefined) {
-                $("#outercanvas").html(
-                    "<div class='outercard'>" +
-                    "<div class='innercard'>" +
-                    "<div class='eventinfo' id='einfo'>" +
-                    JSON.stringify(item) +
-                    "</div>" +
-                    "</div>" +
-                    "</div>"
+                $("#outercanvas").append(
+                        "<div class='outercard'>" +
+                        "<div class='innercard'>" +
+                        "<div class='eventinfo' id='einfo'>" +
+                        JSON.stringify(item) +
+                        "</div>" +
+                        "</div>" +
+                        "</div>"
                 )
             }
         }
 
         function create_cards(data){
-            var data=JSON.parse(data)
-            data.forEach(create_card)
+            var data=JSON.parse(data);
+            $("#outercanvas").empty();
+            data.forEach(create_card);
+        }
+
+        function reset_cards(){
+            $.get("/events", function (data) {
+                      create_cards(data)
+                  });
         }
     </script>
     <script>
       $(document).ready(function(){
 
-          $("#frm").on('input', function(){
-              var input=$("#inpt").val();
-              $.get("/events", {"a.activity_type": input}, function(data){create_cards(data)});
+          reset_cards();
+          $("#frm").on('change', function(){
+              var frmdat = $('input:checkbox:checked').map(function() {return this.value;}).get();
+              console.log(frmdat);
+              if (frmdat.length > 0) {
+                  $.get("/events", {"a.activity_type": JSON.stringify(frmdat)}, function (data) {
+                      create_cards(data)
+                  });
+              }
+              else {
+                  reset_cards()
+              }
               }
           )
     });
@@ -46,6 +61,7 @@
 
         .outercard {
             margin: auto;
+            margin-bottom: 10px;
             height: 100px;
             width: 96%;
             border-radius: 10px;
@@ -60,11 +76,22 @@
             background-color: aliceblue;
         }
 
+        .chkbx {
+            display: inline-block;
+        }
+
     </style>
 </head>
 <body>
 <form id="frm">
     <input type="text" id="inpt">
+    <br>
+    Choose Activity Type:
+    <form id="ActivityType">
+        <div class="chkbx"><input type="checkbox" id="CardGame" value="Card Game">Card Game</div>
+        <div class="chkbx"><input type="checkbox" id="RPG" value="Role-Play game">Role-Play game</div>
+        <div class="chkbx"><input type="checkbox" id="RPG/CardGame" value="Role-Play game/Card game">Role-Play game/Card game</div>
+    </form>
 </form>
 <div class="canvas" id="outercanvas">
 </div>
