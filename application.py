@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -20,15 +20,23 @@ mysql = MySQL(app)
 def index():  # put application's code here
     return render_template('index.html')
 
-@app.route('/events')
+@app.route('/events', methods = ["POST", "GET"])
 def getEvents():
-    cur = mysql.connection.cursor()
-    cur.execute("""SELECT e.event_name, a.activity_name, a.activity_type, e.participants_count, 
+    print(request.args)
+    query = """SELECT e.event_name, a.activity_name, a.activity_type, e.participants_count, 
     l.location_name, l.address_1 
     FROM events e, activities a, locations l 
-    where e.activity_id = a.activity_id and e.location_id = l.location_id;""")
+    where e.activity_id = a.activity_id and e.location_id = l.location_id"""
+    for key, value in request.args.items():
+        query += f" and {key}='{value}'"
+    query += ";"
+    print(query)
+    cur = mysql.connection.cursor()
+    cur.execute(query)
     data = cur.fetchall()
     cur.close()
+    print(json.dumps(data))
+    #return params
     return json.dumps(data)
 
 if __name__ == '__main__':

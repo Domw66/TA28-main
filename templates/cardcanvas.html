@@ -5,16 +5,24 @@
     <title>cardcanvas</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
-        function create_card(input){
-            if (input !== undefined) {
-                return (
+        function create_card(item){
+            console.log(item);
+            if (item !== undefined) {
+                $("#outercanvas").html(
                     "<div class='outercard'>" +
                     "<div class='innercard'>" +
-                    "<div class='eventinfo' id='einfo'></div>" +
+                    "<div class='eventinfo' id='einfo'>" +
+                    JSON.stringify(item) +
+                    "</div>" +
                     "</div>" +
                     "</div>"
                 )
             }
+        }
+
+        function create_cards(data){
+            var data=JSON.parse(data)
+            data.forEach(create_card)
         }
     </script>
     <script>
@@ -22,13 +30,9 @@
 
           $("#frm").on('input', function(){
               var input=$("#inpt").val();
-              $("#outercanvas").html(create_card("TRUE"));
-              var data=$("#einfo").load("/events");
-
+              $.get("/events", {"a.activity_type": input}, function(data){create_cards(data)});
               }
           )
-
-
     });
     </script>
     <style>
