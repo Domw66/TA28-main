@@ -48,7 +48,7 @@ def getData():
     try:
         if params['init'] == 'activity':
             query = """
-                    SELECT DISTINCT a.activity_type
+                    SELECT DISTINCT *
                     FROM activities a; 
                     """
             cur.execute(query)
