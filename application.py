@@ -8,6 +8,7 @@ app.config['MYSQL_HOST'] = 'ta28.mysql.database.azure.com'
 app.config['MYSQL_USER'] = 'ta28'
 app.config['MYSQL_PASSWORD'] = 'Monash#123'
 app.config['MYSQL_DB'] = 'ta28'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
 
