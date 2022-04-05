@@ -1,4 +1,5 @@
 import json
+from Classes import Query, Event
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
@@ -17,49 +18,20 @@ def index():  # put application's code here
     return render_template('index.html')
 
 @app.route('/api', methods = ["GET", "POST"])
-def getData():
+def api():
 
-    key_dict = {
-        "event_name" : "e.event_name",
-        "activity_name" : "a.activity_name",
-        "activity_type" : "a.activity_type",
-        "participants_count" : "e.participants_count",
-        "location_name" : "l.location_name",
-        "address_1" : 'l.address_1'
-    }
-
-    def dynamic_query(fields):
-        query = """SELECT e.event_name, a.activity_name, a.activity_type, e.participants_count, 
-                    l.location_name, l.address_1 
-                    FROM events e, activities a, locations l 
-                    where e.activity_id = a.activity_id and e.location_id = l.location_id"""
-        for key, value in fields.items():
-            query += f" and {key_dict[key]} = '{value}'"
-        query += ";"
-        return query
-
-    ##### Future iterations will have security features here to prevent malicious attack
-    # security()
 
     cur = mysql.connection.cursor()
 
     params = dict(request.args)
     print(params)
-    try:
-        if params['init'] == 'activity':
-            query = """
-                    SELECT DISTINCT *
-                    FROM activities a; 
-                    """
-            cur.execute(query)
-            return json.dumps(cur.fetchall())
 
-    except KeyError:
-        cur.execute(dynamic_query(request.args))
-        return json.dumps(cur.fetchall())
+    result = Query(cur).dynamic(conds=params).run()
 
-    except:
-        print('Different error occurred')
+    print(result)
+
+    data = [Event(row) for row in json.loads(result)]
+    return str(data)
 
 if __name__ == '__main__':
     app.run()
