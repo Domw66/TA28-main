@@ -29,6 +29,15 @@ VALUES
 (106, 'Play the Dou dizhu', 106, 106, 4, 150, '2022-04-15', '18:00', '22:30', 'None')
 ;
 
+INSERT INTO Users (user_id, user_name, user_pwd, user_email)
+VALUES
+(101, 'Dominic', 'dominic', 'dwag0001@student.monash.edu'),
+(102, 'Avinash', 'avinash', 'apam0001@student.monash.edu'),
+(103, 'Yuxin', 'yuxin', 'yhuu0076@student.monash.edu'),
+(104, 'Yu_lei', 'yulei', 'ylei0009@student.monash.edu'),
+(105, 'Yiwen', 'yiwen', 'ybai0019@student.monash.edu')
+;
+
 
 	
 	
