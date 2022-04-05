@@ -18,13 +18,22 @@ def index():  # put application's code here
 @app.route('/api', methods = ["GET", "POST"])
 def getData():
 
+    key_dict = {
+        "event_name" : "e.event_name",
+        "activity_name" : "a.activity_name",
+        "activity_type" : "a.activity_type",
+        "participants_count" : "e.participants_count",
+        "location_name" : "l.location_name",
+        "address_1" : 'l.address_1'
+    }
+
     def dynamic_query(fields):
         query = """SELECT e.event_name, a.activity_name, a.activity_type, e.participants_count, 
             l.location_name, l.address_1 
             FROM events e, activities a, locations l 
             where e.activity_id = a.activity_id and e.location_id = l.location_id"""
         for key, value in fields.items():
-            query += f" and {key} = '{value}'"
+            query += f" and {key_dict[key]} = '{value}'"
         query += ";"
         print(query)
         return query
