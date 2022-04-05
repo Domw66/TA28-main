@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
+  cursor: pointer;
+}
+
+.mt-26 {
+  margin-top: 26px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+.mt-32Text {
+  margin-top: 32px;
+  color: #666666;
+}
+
+.mt-30Text {
+  margin-top: 30px;
+  color: #666666;
+}
+
+.isMain {
+  display: flex;
+  margin-top: 30px;
+  /* background-color: green; */
+  min-height: 687px;
+  max-height: 687px;
+  padding-right: 90px;
+
+}
+
+
+.isImg {
+  min-width: 733px;
+  max-width: 733px;
+  background-size: 100 100;
+  background: no-repeat;
+}
+
+.isRight {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-left: 120px;
+  margin-top: 170px;
+  padding-right: 90px;
+  min-width: 650px;
+  position: relative;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.isRight .isRight_btn {
+  margin-top: 37px;
+  width: 204px;
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #1f6256;
+}
+.isRight  .isGreenBox {
+  width: 85px;
+  height: 64px;
+  background-color: rgb(67, 204, 116);
+  position: absolute;
+  right: 70px;
+  bottom: -40px;
+}
+
+.container .isCenter {
+  box-sizing: border-box;
+  padding-right: 90px;
+  margin-top: 233px;
+  padding-left: 210px;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  /* height: 800px; */
+}
+
+.isCenter_left {
+  margin-top: 150px;
+  /* max-width: 50%; */
+  max-width: 413px;
+}
+
+.isCenter_left .isBtn {
+  margin-top: 32px;
+  width: 158px;
+  height: 54px;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #1f6256;
+}
+
+.isCenter_right {
+  margin-left: 220px;
+  min-width: 413px;
+  display: flex;
+}
+
+.isCenter_right_item {
+  /* background-color: white; */
+  height: 505px;
+  max-width: 298px;
+  height: 318px;
+  margin-right: 43px;
+  padding-left: 28px;
+  padding-top: 44px;
+}
+
+.isIcon {
+  /* background-color: red; */
+  height: 57px;
+  width: 57px;
+  border-radius: 50%;
+}
+
+.isCenter_right_itemR {
+  /* background-color: red; */
+  margin-top: -44px;
+}
+
+.isBgWhite {
+  background-color: white;
+}
+
+.isLogin {
+  display: flex;
+  padding-left: 10px;
+  margin-top: 272px;
+  /* height: 400px; */
+  background-color: #319b88;
+  padding-bottom: 29px;
+  ;
+}
+
+.isLogin-left {
+  width: 45%;
+  margin-top: 98px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 78px;
+}
+.isLogin-left  .isLoginAfterImg{
+  margin-top: -22px;
+  width: 173px;
+  height: 173px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.isLogin-left .isTitle {
+  font-size: 58px;
+  color: white;
+}
+
+.isLogin-left .isTip {
+  margin-top: 43px;
+  color: white;
+  font-size: 14px;
+}
+
+.isLogin-right {
+  width: 50%;
+  padding-right: 108px;
+}
+
+.isLogin-right .isName {
+  margin-top: 65px;
+}
+/* 登陆后的 */
+.isNameT {
+  color: white;
+  margin-top: 95px;
+  padding-bottom: 118px;
+}
+
+.isNameT .isLoginBtn {
+  margin-top: 58px;
+  width: 111px;
+  height: 54px;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #fca100;
+}
+
+.loginAfterName {
+  font-size: 36px;
+}
+
+.loginAfter {
+  font-size: 36px;
+  margin-top: 40px;
+}
+
+.isLogin-right .isName .isIpt {
+  margin-top: 24px;
+  display: block;
+  width: 505px;
+  height: 58px;
+  padding-left: 30px;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+}
+
+.loginFotter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginFotter .isLoginBtn {
+  margin-top: 14px;
+  width: 111px;
+  height: 54px;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #fca100;
+}
+.loginFotter .isLoginBtnT {
+  width: 200px;
+}
+
+.isWaiting {
+  height: 385px;
+  margin-top: 175px;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.isWaiting .left {
+  padding-left: 269px;
+}
+
+.isWaiting .left .title {
+  font-size: 14px;
+  color: #b2b2b2;
+}
+
+.isWaiting .left .isWaitingText {
+  font-size: 48px;
+  font-weight: 700px;
+  margin-top: 47px;
+
+}
+
+.isWaiting .left .tip {
+  margin-top: 44px;
+  font-size: 14px;
+  color: #707070;
+}
+
+.isWaiting .right {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+}
+
+.isWaiting .right .isBtn {
+  display: flex;
+  margin-right: 147px;
+}
+
+.Btn {
+  width: 58px;
+  height: 58px;
+  line-height: 58px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+
+}
+
+.isActiveT {
+  background-color: #1f6256;
+}
+
+.footer {
+  margin-top: 100px;
+  display: flex;
+  min-height: 334px;
+  box-sizing: border-box;
+  background-color: #319b88;
+  padding: 102px 0 90px 289px;
+}
+
+.mr-138 {
+  margin-right: 138px;
+}
+
+.mt-38 {
+  margin-top: 38px;
+  cursor: pointer;
+}
+
+.footer_btn .footer_btn {
+  display: flex;
+}
+
+.btnArr {
+  display: flex;
+}
+
+.ft_btn {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  background-color: #fca100;
+  border-radius: 50%;
+  margin-right: 17px;
+}
