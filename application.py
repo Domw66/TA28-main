@@ -24,7 +24,7 @@ def getData():
             FROM events e, activities a, locations l 
             where e.activity_id = a.activity_id and e.location_id = l.location_id"""
         for key, value in fields.items():
-            query += f" and {key} in {value.replace('[', '(').replace(']', ')')}"
+            query += f" and {key} = '{value}'"
         query += ";"
         print(query)
         return query
@@ -45,12 +45,13 @@ def getData():
             cur.execute(query)
             return json.dumps(cur.fetchall())
 
-    except NameError:
+    except:
+        print(dynamic_query(request.args))
         cur.execute(dynamic_query(request.args))
         return json.dumps(cur.fetchall())
 
-    except:
-        print('Different error occurred')
+    #except:
+    #    print('Different error occurred')
 
 
 
