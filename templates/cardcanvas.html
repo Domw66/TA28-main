@@ -35,7 +35,9 @@
       $(document).ready(function(){
 
           reset_cards();
+
           $("#frm").on('change', function(){
+
               var frmdat = $('input:checkbox:checked').map(function() {return this.value;}).get();
               console.log(frmdat);
               if (frmdat.length > 0) {
@@ -44,7 +46,7 @@
                   });
               }
               else {
-                  reset_cards()
+                  reset_cards();
               }
               }
           )
