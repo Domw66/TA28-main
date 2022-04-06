@@ -1,6 +1,6 @@
 import json
 from Classes import Query, Event
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, sessions
 from flask_mysqldb import MySQL
 
 # Start App
@@ -36,7 +36,7 @@ def api():
 
     #selection_dict transforms user actions into SQL condition key-value pairs
     selection_dict = {
-        'clickAll' : {'activity_type':'None'},
+        'clickAll' : {'activity_type':'None', 'activity_semi_type':'None'},
         'clickGame' : {'activity_type':'Game'},
         'clickSports' : {'activity_type':'Sports'},
         'clickParty' : {'activity_type':'Party'},
@@ -45,7 +45,7 @@ def api():
         'clickBoxHill' : {'suburb':'Box Hill'},
         'clickMelbourne' : {'suburb':'Melbourne'},
         'clickWestMelbourne' : {'suburb':'West Melbourne'},
-        'clickRolePlay  ' : {'activity_semi_type':'Role Play'},
+        'clickRolePlay' : {'activity_semi_type':'Role-Play'},
         'clickBoard' : {'activity_semi_type':'Board'},
         'clickAllLocation' : {'suburb':'None'}
     }
