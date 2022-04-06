@@ -45,8 +45,8 @@ def api():
         'clickBoxHill' : {'suburb':'Box Hill'},
         'clickMelbourne' : {'suburb':'Melbourne'},
         'clickWestMelbourne' : {'suburb':'West Melbourne'},
-        'clickRolePlayGame' : {'activity_semi_type':'Role Play Game'},
-        'clickBoardGame' : {'activity_semi_type':'Board Game'},
+        'clickRolePlay  ' : {'activity_semi_type':'Role Play'},
+        'clickBoard' : {'activity_semi_type':'Board'},
         'clickAllLocation' : {'suburb':'None'}
     }
 
