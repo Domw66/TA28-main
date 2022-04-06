@@ -1,6 +1,6 @@
 import json
 from Classes import Query, Event
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -16,6 +16,11 @@ mysql = MySQL(app)
 @app.route('/')
 def index():  # put application's code here
     return render_template('index.html')
+
+@app.route('/images', methods=['GET','POST'])
+def get_images():
+    image_ref = list(request.args)[0]
+    return send_from_directory(path=image_ref, directory='FrontEnd/src/assets/images/')
 
 @app.route('/api', methods = ["GET", "POST"])
 def api():
