@@ -48,8 +48,6 @@ class Query:
         else:
             cond_string = ""
 
-        print(cond_string)
-
         query = f"SELECT {col_string} " +\
                 "FROM events e, activities a, locations l " + \
                 f"where {' and '.join(self.static_dict['conds'])}{cond_string};"
@@ -61,6 +59,7 @@ class Query:
         return self
 
     def run(self):
+        print(self.query)
         self.cursor.execute(self.query)
         return json.dumps(self.cursor.fetchall(), default = self.datetime_converter)
 
