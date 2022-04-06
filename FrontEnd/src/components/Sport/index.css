@@ -1,0 +1,110 @@
+.reportMain {
+  width: 100%;
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.reportMain .isArrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+.reportMain .isArrow .isRight {
+  margin-top: -100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.reportMain .isArrow .isRight .isBtn {
+  width: 56px;
+  height: 56px;
+}
+.isLeftArrowBg {
+  background: url(../../assets/images/leftArrow.png);
+  background-size: cover;
+}
+.isRightArrowBg {
+  margin-left: 45px;
+  background: url(../../assets/images/rightArrow.png);
+  background-size: cover;
+  background-color: rgb(31, 98, 86);
+}
+.greenBox {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  width: 47px;
+  height: 64px;
+  background-color: rgb(67, 204, 116);
+}
+.inner-container::-webkit-scrollbar {
+  display: none;
+}
+
+.isPhoto_Main {
+  margin-top: 26px;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.box {
+  margin-right: 20px;
+}
+
+.isImageT {
+  /* 296*296 */
+  min-width: 450px;
+  max-width: 450px;
+  min-height: 450px;
+  max-height: 450px;
+  /* margin-right: 20px; */
+}
+
+.isWtkImage {
+  background: url(../../assets/images/wtk.jpg);
+  background-size: cover;
+}
+
+.isJokerImage {
+  background: url(../../assets/images/joker.jpg);
+  background-size: cover;
+}
+
+.isBadImage {
+  background: url(../../assets/images/badminton.jpg);
+  background-size: cover;
+  margin-right: 0;
+}
+
+.isMahImage {
+  background: url(../../assets/images/mahjong.jpg);
+  background-size: cover;
+}
+
+.isTabImage {
+  background: url(../../assets/images/tableTennis.jpg);
+  background-size: cover;
+}
+
+.gameText {
+  margin-top: 38px;
+  font-size: 11px;
+  color: #333333;
+}
+
+.text {
+  margin-top: 17px;
+  font-size: 20px;
+
+}
+
+.message {
+  font-size: 17px;
+  line-height: 34px;
+  max-width: 300px;
+  margin-top: 30px;
+  color: #666666;
+}

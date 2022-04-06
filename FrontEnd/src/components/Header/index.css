@@ -1,0 +1,51 @@
+
+.isHeader {
+  /* background-color: skyblue; */
+  height: 116px;
+  display: flex;
+  justify-content:space-between;
+  padding-right: 90px;
+}
+.isHeader_left {
+  display: flex;
+  padding-left: 20px;
+  max-width: 50%;
+  min-width: 335px;
+  align-items: center;
+}
+.isHeader_left .isLogo {
+  margin-right: 44px;
+  min-width: 114px;
+  min-height: 99px;
+  background:url(../../assets/images/logo.png);
+background-size:cover;
+}
+.isHeader_right {
+  display: flex;
+  padding-left: 35px;
+  align-items: center;
+}
+.isHeader_right_menu {
+  font-weight: 700;
+  font-size: 20px;
+  color: black;
+  margin-right: 30px;
+  min-width: 130px;
+  max-width: 130px;
+}
+.isHeader_right_btn {
+  width: 80px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  color: white;
+  background-color: #1f6256;
+  border-radius: 8px;
+}
+.LoginName {
+  font-size: 30px;
+}
+
+a {
+  text-decoration: none !important;
+}
