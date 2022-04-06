@@ -1,0 +1,36 @@
+.footer {
+  margin-top: 100px;
+  display: flex;
+  min-height: 334px;
+  box-sizing: border-box;
+  background-color: #319b88;
+  padding: 102px 0 90px 289px;
+}
+
+.mr-138 {
+  margin-right: 138px;
+}
+
+.mt-38 {
+  margin-top: 38px;
+  cursor: pointer;
+}
+
+.footer_btn .footer_btn {
+  display: flex;
+}
+
+.btnArr {
+  display: flex;
+}
+
+.ft_btn {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  background-color: #fca100;
+  border-radius: 50%;
+  margin-right: 17px;
+}

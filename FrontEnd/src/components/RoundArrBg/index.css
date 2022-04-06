@@ -1,0 +1,7 @@
+.roundArrBg {
+  min-width: 118px;
+  min-height: 118px;
+  max-width: 118px;
+  max-height: 118px;
+  background: url(../../assets/images/roundArrBg.png);
+}
