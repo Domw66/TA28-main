@@ -21,7 +21,7 @@ difference_dict = {}
 
 #Render Homepage
 @app.route('/')
-def index():  # put application's code here
+def index():
     return render_template('index.html')
 
 # Render image API
@@ -50,23 +50,35 @@ def api():
         'clickAllLocation' : {'suburb':'None'}
     }
 
+    # cursor object to access DB
     cur = mysql.connection.cursor()
 
-    #try:
-    params = "".join(list(request.args.items())[0])
-    for key, value in selection_dict[params].items():
-        difference_dict.update({key: value})
-        if params in ['clickAll', 'clickAllLocation']:
-            difference_dict.pop(key)
-    #except:
-    #    pass
+    print(request.args)
+
+    # try/except block allows /api with no queries to run
+    try:
+        # Turn parameters into selection_dict keys
+        params = "".join(list(request.args.items())[0])
+
+        # Update difference dict so that newest request is stored in memory
+        for key, value in selection_dict[params].items():
+            difference_dict.update({key: value})
+
+            # If any 'ALL' value is selected, remove any specific filters
+            if params in ['clickAll', 'clickAllLocation']:
+                difference_dict.pop(key)
+    except:
+        pass
 
     print(difference_dict)
 
+    # Access database as per query class
     result = Query(cur).dynamic(conds=difference_dict)
 
     print(result)
     print(result.run())
+
+    # Create Event object as per Yiwen's specification
     data = [Event(row) for row in json.loads(result.run())]
     return str(data)
 

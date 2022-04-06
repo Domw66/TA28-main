@@ -3,6 +3,8 @@ import datetime
 
 class Query:
 
+    # Create class dicts for accessing across all instantiations
+
     key_dict = {
         "event_name": "e.event_name",
         "event_date": "e.event_date",
@@ -30,16 +32,20 @@ class Query:
     def __str__(self):
         return self.query
 
+    # Used when serialisating dates to json
     def datetime_converter(self, date):
         if isinstance(date, datetime.date) or isinstance(date, datetime.timedelta):
             return date.__str__()
         else:
             return "placeholder date/time"
 
+    # Dynamic SQL query with column selection and conditions
     def dynamic(self, col_list=static_dict['default_cols'], conds=None):
 
+        # Format column selection
         col_string = ", ".join([self.key_dict[x] for x in col_list])
 
+        # If conds is a dict, that means extra conditions have been passed and must be formatted.
         if isinstance(conds, dict):
             if len(conds) > 0:
                 cond_string = " and " + " and ".join([f"{self.key_dict[key]}='{value}'" for key, value in conds.items()])
@@ -48,16 +54,19 @@ class Query:
         else:
             cond_string = ""
 
+        # Generate Query in object attributes
         query = f"SELECT {col_string} " +\
                 "FROM events e, activities a, locations l " + \
                 f"where {' and '.join(self.static_dict['conds'])}{cond_string};"
         self.query = query
         return self
 
+    # wrapper for preset common query
     def static(self):
         self.dynamic(self.static_dict['cols'], self.static_dict['conds'])
         return self
 
+    # Run query, return data
     def run(self):
         self.cursor.execute(self.query)
         return json.dumps(self.cursor.fetchall(), default = self.datetime_converter)
