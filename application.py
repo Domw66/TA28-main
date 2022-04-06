@@ -54,6 +54,7 @@ def api():
 
     result = Query(cur).dynamic(conds=difference_dict)
 
+    print(result.run())
     data = [Event(row) for row in json.loads(result.run())]
     return str(data)
 

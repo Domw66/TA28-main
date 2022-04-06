@@ -13,7 +13,8 @@ class Query:
         "activity_type": "a.activity_type",
         "location_name": "l.location_name",
         "address_1": 'l.address_1',
-        "*" : "*"
+        "*" : "*",
+        "activity_semi_type":'a.activity_semi_type'
     }
 
     static_dict = {
@@ -68,13 +69,11 @@ class Event:
     count = 0
 
     def __init__(self, row_dict):
-        self.image_path = str(row_dict['event_image_path'])
-        self.date = row_dict['event_date']
-        self.time = row_dict['event_start_time_24hr']
-        self.name = row_dict['event_name']
-        self.attendance = str(row_dict['participants_count'])
+        for row in row_dict:
+            exec(f"self.{row} = str(row_dict['{row}'])")
         self.position = ""
         Event.count += 1
 
     def __repr__(self):
+        print(self.__dict__.values())
         return "{" + f"Event{self.position}: {', '.join(list(self.__dict__.values())[:-1])}" + "}"
