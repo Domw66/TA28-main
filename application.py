@@ -21,23 +21,30 @@ def index():  # put application's code here
 def api():
 
     selection_dict = {
+        'clickAll' : {},
         'clickGame' : {'activity_type':'Game'},
         'clickSports' : {'activity_type':'Sports'},
         'clickParty' : {'activity_type':'Party'},
         'clickOther' : {'activity_type':'Other'},
-        'clickDocklands' : {'location':'Docklands'},
-        'clickBoxHill' : {'location':'Box Hill'},
-        'clickMelbourne' : {'location':'Melbourne'},
-        'clickWestMelbourne' : {'location':'West Melbourne'},
+        'clickDocklands' : {'location_name':'Docklands'},
+        'clickBoxHill' : {'location_name':'Box Hill'},
+        'clickMelbourne' : {'location_name':'Melbourne'},
+        'clickWestMelbourne' : {'location_name':'West Melbourne'},
+        'clickRolePlayGame' : {'activity_semi_type':'Role Play Game'},
+        'clickBoardGame' : {'activity_semi_type':'Board Game'}
     }
 
     difference_dict = {}
 
     cur = mysql.connection.cursor()
 
-    params = "".join(list(request.args.items())[0])
-    for key, value in selection_dict[params].items():
-        difference_dict[key] = value
+    try:
+        params = "".join(list(request.args.items())[0])
+        for key, value in selection_dict[params].items():
+            difference_dict[key] = value
+    except:
+        pass
+
     print(difference_dict)
 
     result = Query(cur).dynamic(conds=difference_dict)
