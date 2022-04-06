@@ -11,7 +11,7 @@ class Query:
         "event_image_path": "e.event_image_path",
         "activity_name": "a.activity_name",
         "activity_type": "a.activity_type",
-        "location_name": "l.location_name",
+        "suburb": "l.suburb",
         "address_1": 'l.address_1',
         "*" : "*",
         "activity_semi_type":'a.activity_semi_type'
@@ -38,7 +38,6 @@ class Query:
 
     def dynamic(self, col_list=static_dict['default_cols'], conds=None):
 
-
         col_string = ", ".join([self.key_dict[x] for x in col_list])
 
         if isinstance(conds, dict):
@@ -60,7 +59,6 @@ class Query:
         return self
 
     def run(self):
-        print(self.query)
         self.cursor.execute(self.query)
         return json.dumps(self.cursor.fetchall(), default = self.datetime_converter)
 
@@ -75,5 +73,4 @@ class Event:
         Event.count += 1
 
     def __repr__(self):
-        print(self.__dict__.values())
         return "{" + f"Event{self.position}: {', '.join(list(self.__dict__.values())[:-1])}" + "}"
