@@ -20,17 +20,21 @@ def index():  # put application's code here
 @app.route('/api', methods = ["GET", "POST"])
 def api():
 
+    selction_dict = {
+        'Type': ''
+    }
+
 
     cur = mysql.connection.cursor()
 
     params = dict(request.args)
     print(params)
 
-    result = Query(cur).dynamic(conds=params).run()
+    result = Query(cur).dynamic(conds=params)
 
     print(result)
 
-    data = [Event(row) for row in json.loads(result)]
+    data = [Event(row) for row in json.loads(result.run())]
     return str(data)
 
 if __name__ == '__main__':

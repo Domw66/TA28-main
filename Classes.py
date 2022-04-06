@@ -41,9 +41,14 @@ class Query:
         col_string = ", ".join([self.key_dict[x] for x in col_list])
 
         if isinstance(conds, dict):
-            cond_string = " and " + " and ".join([f"{self.key_dict[key]}='{value}'" for key, value in conds.items()])
+            if len(conds) > 0:
+                cond_string = " and " + " and ".join([f"{self.key_dict[key]}='{value}'" for key, value in conds.items()])
+            else:
+                cond_string = ""
         else:
             cond_string = ""
+
+        print(cond_string)
 
         query = f"SELECT {col_string} " +\
                 "FROM events e, activities a, locations l " + \
