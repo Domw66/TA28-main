@@ -21,6 +21,41 @@ SET activity_semi_type = 'Role-play' where activity_id in (101, 102, 103, 104);
 UPDATE Activities
 SET activity_semi_type = 'Board' where activity_id in (105, 106);
 
+update activities set activity_image_path = 'mahjong.jpg' 
+where activity_id = 101;
+update activities set activity_image_path = 'MurderMystery.jpg' 
+where activity_id = 102;
+update activities set activity_image_path = 'Werewolves.jpg' 
+where activity_id = 103;
+update activities set activity_image_path = 'mafiagame.jpg'
+where activity_id = 104;
+update activities set activity_image_path = 'thespy.jpg'
+where activity_id = 105;
+update activities set activity_image_path = 'doudizu.jpg' 
+where activity_id = 106;
+update activities set activity_image_path = 'tableTennis.jpg' 
+where activity_id = 107;
+update activities set activity_image_path = 'badminton.jpg'
+where activity_id = 108;
+update activities set activity_image_path = 'Volleyball.jpg'
+where activity_id = 109;
+update activities set activity_image_path = 'Cycling.jpg'
+where activity_id = 110;
+update activities set activity_image_path = 'football.jpg'
+where activity_id = 111;
+update activities set activity_image_path = 'chinesebbq.jpg' 
+where activity_id = 112;
+update activities set activity_image_path = 'HongKongdumplings.jpg' 
+where activity_id = 113;
+update activities set activity_image_path = 'chowmein.jpg'
+where activity_id = 114;
+update activities set activity_image_path = 'shanghai.jpg'
+where activity_id = 115;
+update activities set activity_image_path = 'yumseafood.jpg'
+where activity_id = 116;
+update activities set activity_image_path = 'exhibition.jpg'
+where activity_id = 117;
+
 INSERT INTO Activities (activity_id, activity_name, activity_description, activity_type, min_participants, max_participants, activity_duaration_min)
 VALUES 
 (107, 'Table tennis', '', 'Sports', 2, 4, 60),
