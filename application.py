@@ -56,6 +56,12 @@ def get_images():
     image_ref = list(request.args)[0]
     return send_from_directory(path=image_ref, directory='FrontEnd/src/assets/images/')
 
+@app.route('/src', methods=['GET','POST'])
+def access_filesystem():
+    path = list(request.args)[0]
+    print(path)
+    return send_from_directory(path=path, directory='FrontEnd/src')
+
 # Render general data  API
 @app.route('/api', methods = ["GET", "POST"])
 def api():
