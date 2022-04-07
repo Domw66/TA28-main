@@ -18,7 +18,7 @@ class Query:
         "*" : "*",
         "activity_semi_type":'a.activity_semi_type',
         "event_start_time_24hr":"e.event_start_time_24hr",
-        "activities":{"a.activity_name": "activities a"},
+        "activities":{"a.activity_type": "activities a"},
         'suburbs': {"l.suburb": "locations l"}
     }
 
