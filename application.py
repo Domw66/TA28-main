@@ -88,5 +88,22 @@ def api():
     data = [Event(row) for row in json.loads(result.run())]
     return str(data)
 
+@app.route('/init', methods=['GET','POST'])
+def init():
+
+    # cursor object to access DB
+    cur = mysql.connection.cursor()
+
+    print(request.args)
+
+    param=list(request.args)[0]
+
+    result = Query(cur).distinct(param)
+
+    data = [list(x.values())[0] for x in json.loads(result.run())]
+
+    return str(data)
+
+
 if __name__ == '__main__':
     app.run()

@@ -17,7 +17,9 @@ class Query:
         "address_1": 'l.address_1',
         "*" : "*",
         "activity_semi_type":'a.activity_semi_type',
-        "event_start_time_24hr":"e.event_start_time_24hr"
+        "event_start_time_24hr":"e.event_start_time_24hr",
+        "activities":{"a.activity_name": "activities a"},
+        'suburbs': {"l.suburb": "locations l"}
     }
 
     static_dict = {
@@ -69,6 +71,10 @@ class Query:
     # wrapper for preset common query
     def static(self):
         self.dynamic(self.static_dict['cols'], self.static_dict['conds'])
+        return self
+
+    def distinct(self, col):
+        self.query = f"SELECT DISTINCT {list(self.key_dict[col].keys())[0]} from {list(self.key_dict[col].values())[0]}"
         return self
 
     # Run query, return data
