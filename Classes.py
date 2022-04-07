@@ -22,7 +22,7 @@ class Query:
     static_dict = {
         "cols" : ["event_name", "activity_name", "activity_type", "participants_count", "location_name", "address_1"],
         "conds" : ["e.activity_id = a.activity_id", "e.location_id = l.location_id"],
-        "default_cols" : ['activity_image_path', 'event_name', 'event_date', 'event_start_time', 'participants_count']
+        "default_cols" : ['activity_image_path', 'event_name', 'event_date', 'event_start_time', 'participants_count', 'suburb']
     }
 
     def __init__(self, cursor):

@@ -53,7 +53,9 @@ def api():
     # cursor object to access DB
     cur = mysql.connection.cursor()
 
-    print(request.args)
+    if list(request.args)[0] == 'refresh':
+        difference_dict.clear()
+        return "Filters reset"
 
     # try/except block allows /api with no queries to run
     try:
