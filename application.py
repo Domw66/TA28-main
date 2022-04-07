@@ -86,6 +86,7 @@ def api():
 
     return str(data)
 
+#send all Button information
 @app.route('/init')
 def init():
     return str(Button.format())
