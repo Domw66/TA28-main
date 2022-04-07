@@ -11,14 +11,16 @@
   align-items: center;
   height: 100px;
 }
-.reportMain .isArrow .isRight {
+.reportMain .isArrow .isRightFd {
   margin-top: -100px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin: 180px;
+  position: relative;
 }
 
-.reportMain .isArrow .isRight .isBtn {
+.reportMain .isArrow .isRightFd .isBtn {
   width: 56px;
   height: 56px;
 }
@@ -32,9 +34,9 @@
   background-size: cover;
   background-color: rgb(31, 98, 86);
 }
-.greenBox {
+.isRightFd .greenBox {
   position: absolute;
-  right: 0;
+  right: -180px;
   top: -10px;
   width: 47px;
   height: 64px;
@@ -48,19 +50,28 @@
   margin-top: 26px;
   display: flex;
   overflow-x: scroll;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* background-color: red; */
 }
 
 .box {
-  margin-right: 20px;
+  flex: 1;
+  width: 24%;
+  /* background-color: red; */
+  margin-right: 50px;
 }
 
 .isImageT {
   /* 296*296 */
-  min-width: 296px;
-  max-width: 296px;
+  min-width: 100%;
+  max-width: 100%;
   min-height: 296px;
   max-height: 296px;
   /* margin-right: 20px; */
+}
+.isNOMr {
+  margin-right: 0;
 }
 
 .isWtkImage {
@@ -85,7 +96,7 @@
 }
 
 .isTabImage {
-  background: url(../../assets/images/tabletennis.jpg);
+  background: url(../../assets/images/tableTennis.jpg);
   background-size: cover;
 }
 

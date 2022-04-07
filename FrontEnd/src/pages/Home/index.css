@@ -9,6 +9,7 @@ div {
 
 .mt-26 {
   margin-top: 26px;
+  color: white;
 }
 
 .mt-30 {
@@ -45,7 +46,7 @@ div {
   background: url('../../assets/images/roundArrBg.png');
   position: absolute;
   background-size: cover;
-  bottom: 0;
+  bottom: 33px;
   left: 685px;
 }
 
@@ -94,7 +95,7 @@ div {
   box-sizing: border-box;
   margin-left: 120px;
   margin-top: 170px;
-  padding-right: 90px;
+  /* padding-right: 90px; */
   min-width: 650px;
   position: relative;
 }
@@ -106,8 +107,18 @@ div {
 .mt-40Text {
   line-height: 30px;
 }
+.fz-16 {
+  font-size: 16px;
+}
+.colorBlack {
+  color: #333333;
+}
+.fz-24 {
+  font-size: 24px;
+}
 
 .isRight .isRight_btn {
+  font-size: 14px;
   margin-top: 37px;
   width: 204px;
   height: 55px;
@@ -122,7 +133,7 @@ div {
   height: 64px;
   background-color: rgb(67, 204, 116);
   position: absolute;
-  right: 70px;
+  right: -180px;
   bottom: -40px;
 }
 
@@ -133,9 +144,12 @@ div {
   padding-left: 210px;
   display: flex;
   box-sizing: border-box;
-  background-color: #f9f9f9;
   position: relative;
   /* height: 800px; */
+}
+.bgShadow {
+  background: #FFFFFF;
+box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
 }
 
 .isCenter_left {
@@ -146,6 +160,7 @@ div {
 
 .isCenter_left .isBtn {
   margin-top: 32px;
+  color: white;
   width: 158px;
   height: 54px;
   line-height: 54px;
@@ -163,8 +178,10 @@ div {
 .isCenter_right_item {
   /* background-color: white; */
   height: 505px;
-  max-width: 298px;
-  height: 318px;
+  min-width: 296px;
+  max-width: 296px;
+  min-height: 328px;
+  height: 328px;
   margin-right: 43px;
   padding-left: 28px;
   padding-top: 44px;
@@ -189,37 +206,53 @@ div {
 }
 
 .isLogin {
-  display:flex;
-  padding-left: 10px;
+  display: flex;
+  padding-left: 198px;
+  padding-right: 15px;
   margin-top: 272px;
   /* height: 400px; */
-  background-color: #319b88;
-  padding-bottom: 29px;
-  padding-right: 135px;
+  background-color: rgb(57, 154, 137);
+  padding-bottom: 29px;  
   position: relative;
+  justify-content:space-between;
+}
+.isCreate {
+  padding-left: 141px;
+}
+.isCreateTip {
+  margin-left: -100px
+}
+.isLoginAfterFaceBox {
+  /* margin-left: -100px */
+  padding-left: 151px;
 }
 
 .isLogin-left {
-  width: 100%;
+  width: 50%;
   margin-top: 98px;
   display: flex;
   flex-direction: column;
   padding-left: 78px;
-
 }
 
 .isLogin-left .isLoginAfterImg {
   margin-top: -22px;
-  width: 173px;
-  height: 173px;
-  object-fit: cover;
+  min-width: 175px;
+  max-width: 175px;
+  min-height: 173px;
+  max-height: 173px;
+  border-radius: 50%;
+  /* background-color: red; */
+  background: no-repeat;
 }
 
 .isLogin-left .isTitle {
-  font-size: 58px;
+  font-size: 48px;
   color: white;
 }
-
+.fz-48 {
+  font-size: 48px;
+}
 .isLogin-left .isTip {
   margin-top: 43px;
   color: white;
@@ -228,11 +261,15 @@ div {
 
 .isLogin-right {
   width: 50%;
-  padding-right: 108px;
 }
 
 .isLogin-right .isName {
+  color: white;
   margin-top: 65px;
+  font-size: 48px;
+}
+.isLogin-right .isIptSize {
+  font-size: 16px;
 }
 
 /* 登陆后的 */
@@ -240,9 +277,11 @@ div {
   color: white;
   margin-top: 95px;
   padding-bottom: 118px;
+  
 }
 
 .isNameT .isLoginBtn {
+  color: #ffffff !important;
   margin-top: 58px;
   width: 111px;
   height: 54px;
@@ -253,14 +292,26 @@ div {
 }
 
 .loginAfterName {
+  color: white;
   font-size: 36px;
 }
 
 .loginAfter {
+  color: white;
   font-size: 36px;
   margin-top: 40px;
 }
 
+.isLoginAfter {
+  justify-content: flex-start !important;
+}
+.isLoginAfter-left {
+  width: 20%;
+}
+
+.isLoginAfterBtn {
+  margin-left: 190px;
+}
 .isLogin-right .isName .isIpt {
   margin-top: 24px;
   display: block;
@@ -274,7 +325,8 @@ div {
 
 .loginFotter {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  /* position: relative; */
 }
 
 .loginFotter .isLoginBtn {
@@ -285,10 +337,14 @@ div {
   text-align: center;
   border-radius: 8px;
   background-color: #fca100;
+  color: white;
+  margin-left: 160px;
 }
 
 .loginFotter .isLoginBtnT {
+  color: white;
   width: 200px;
+  margin-right: 120px;
 }
 
 .isWaiting {

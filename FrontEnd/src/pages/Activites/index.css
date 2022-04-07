@@ -1,0 +1,334 @@
+.container {
+  margin-top: 0;
+}
+
+.header {
+  max-width: 80%;
+  padding-right: 90px;
+  border-radius: 40px;
+  /* padding-right: 108px; */
+  min-height: 706px;
+  max-height: 706px;
+  background-color: rgb(49, 155, 136);
+  position: relative;
+  box-sizing: border-box;
+  position: relative;
+}
+.fz-48T {
+  margin-top: 54px;
+  font-size: 48px;
+  color: #333333;
+}
+
+.fiveroundArrBg {
+  min-width: 118px;
+  min-height: 118px;
+  background: url('../../assets/images/roundArrBg.png');
+  position: absolute;
+  background-size: cover;
+  top: 33px;
+  right: -139px;
+  z-index: 2;
+}
+
+.sixroundArrBg {
+  min-width: 118px;
+  min-height: 118px;
+  background: url('../../assets/images/roundArrBg.png');
+  position: absolute;
+  background-size: cover;
+  bottom: -99px;
+}
+.isHaveRoundBg {
+  position: relative;
+}
+
+.sevenroundArrBg {
+  min-width: 118px;
+  min-height: 118px;
+  background: url('../../assets/images/roundArrBg.png');
+  position: absolute;
+  background-size: cover;
+  right: -240px;
+  top: 100px;
+  /* bottom: -63px; */
+}
+
+.eightroundArrBg {
+  min-width: 118px;
+  min-height: 118px;
+  background: url('../../assets/images/roundArrBg.png');
+  position: absolute;
+  background-size: cover;
+  top: -260px;
+  left: 0px;
+  /* right: 90px;
+  bottom: -63px; */
+}
+
+.header .left {
+  padding-top: 115px;
+  padding-left: 134px;
+  max-width: 40%;
+}
+
+.header .header_img {
+  position: absolute;
+  top: 87px;
+  right: -270px;
+  bottom: 116px;
+  /* max-width: 30%; */
+  min-width: 504px;
+  max-width: 504px;
+  min-height: 562px;
+  max-height: 562px;
+}
+
+.fz-64 {
+  font-size: 64px;
+  color: white;
+}
+
+.fz-16 {
+  font-size: 20px;
+  color: white;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mt-31 {
+  margin-top: 31px;
+}
+
+.isSearch {
+  margin-top: 122px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.isSearch .tip {
+  font-size: 22px;
+  font-weight: 700px;
+  color: rgb(102, 102, 102);
+}
+
+.isSearch .title {
+  margin-top: 53px;
+  font-weight: 700px;
+}
+
+.isSearch .isIpt {
+  margin-top: 37px;
+  display: flex;
+  height: 56px;
+}
+
+.isSearch .isIpt .ipt {
+  display: block;
+  width: 504px;
+  padding-left: 30px;
+  border: none;
+  border-radius: 15px;
+  border: 1px solid #666;
+  outline: none;
+}
+
+.isSearch .isIpt .btn {
+  margin-left: 18px;
+  padding: 20px;
+  width: 56px;
+  line-height: 56px;
+  border-radius: 10px;
+  text-align: center;
+  background: url(../../assets/images/sendIcon.png) center no-repeat;
+  /* background-color: rgb(252, 161, 0); */
+  background-size: 100 100;
+
+}
+
+
+.isList {
+  width: 100%;
+  margin-top: 26px;
+  display: flex;
+  padding-left: 278px;
+}
+
+.isList .left {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 39px;
+  padding-top: 40px;
+}
+
+.pageTwoBox {
+  margin-right: 20px;
+  min-height: 463px;
+  box-sizing: border-box;
+}
+
+.isImage {
+  min-width: 370px;
+  max-width: 370px;
+  min-height: 288px;
+  max-height: 288px;
+  margin-right: 32px;
+  margin-top: 30px;
+}
+
+
+.gameText {
+  margin-top: 34px;
+  font-size: 11px;
+  color: #333333;
+}
+
+.text {
+  margin-top: 25px;
+  font-size: 24px;
+}
+
+.message {
+  font-size: 17px;
+  line-height: 34px;
+  max-width: 300px;
+  margin-top: 63px;
+  color: #666666;
+}
+
+.isList .right {
+  width: 30%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 400px;
+}
+
+.isList .right .box {
+  margin-top: 40px;
+  padding: 43px 35px 0;
+  min-width: 372px;
+  max-width: 372px;
+  min-height: 397px;
+  padding-bottom: 37px;
+  max-height: 397px;
+}
+
+.mt-62 {
+  margin-top: 62px;
+}
+
+.isRightTitle {
+  font-size: 19px;
+  font-weight: 700;
+  color: break;
+  background: #FFFFFF;
+box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
+}
+
+.isNoBorder {
+  margin-top: 100px;
+  border: none !important;
+}
+
+.mt-44AndRound {
+  margin-top: 44px;
+  line-height: 26px;
+  border-bottom: 1px solid rgb(229, 229, 229);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.isRound {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+}
+.isCheck {
+  background-color: rgb(49, 155, 136);
+}
+.isGard {
+  background-color: rgb(229, 229, 229);
+}
+
+.two {
+  margin-top: 40px;
+}
+
+.three {
+  display: flex;
+  flex-direction: column;
+  max-height: 100px !important;
+}
+
+.time-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mt-44 {
+  margin-top: 44px;
+}
+
+.right .setHeight {
+  padding: 43px 35px 0;
+  min-height: 100px;
+  max-height: 100px;
+  padding-bottom: 48px;
+}
+
+.isMt-21 {
+  margin-top: 21px !important;
+}
+
+.haveChildren {
+  display: flex;
+  flex-direction: column;
+}
+
+.son {
+  padding-left: 20px;
+}
+
+
+.isPage {
+  margin-top: 170px;
+  padding-left: 411px;
+  display: flex;
+}
+
+.isPage .btn {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #3e6357;
+  margin-right: 10px;
+  border: 1px solid rgb(199, 202, 201);
+}
+
+.isNoBg {
+  background-color: #fff !important;
+  border: 1px solid rgb(199, 202, 201);
+}
+
+.isPage .nextBtn {
+  width: 108px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #3e6357;
+}
+.isPageText {
+  color: #1F6256;
+}
+.isWhiteText {
+  color: white;
+}

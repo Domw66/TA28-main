@@ -4,6 +4,7 @@ import Activites from '../pages/Activites'
 import ContactUs from '../pages/ContactUs'
 import MyAccount from '../pages/MyAccount'
 import Calendar from '../pages/Calendar'
+import AboutUs from '../pages/AboutUs'
 // 路由表
 export default [
     {
@@ -26,6 +27,12 @@ export default [
       path:'/calendar',
       element:<Calendar/>
     },
+    {
+      path:'/aboutus',
+      element:<AboutUs/>
+    },
+
+
     {
       path:'*',
       element:<Navigate to="/home" />

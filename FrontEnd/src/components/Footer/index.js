@@ -24,12 +24,18 @@ export default function Header() {
         <dt className='mt-38'>Help</dt>
       </dl>
     </div>
-    <div className='two mr-138'>
+    <div className='mr-138'>
+      {/* <dl>
+        <dt className='mt-38'>Company</dt>
+        <dt className='mt-38'>Monash University</dt>
+        <dt className='mt-38'>Contact Us</dt>
+      </dl> */}
       <dl>
         <dt className='mt-38'>Company</dt>
         <dt className='mt-38'>Monash University</dt>
         <dt className='mt-38'>Contact Us</dt>
       </dl>
+      
     </div>
     <div className='three'>
       <dl className='footer_btn'>

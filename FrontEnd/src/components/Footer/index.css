@@ -1,10 +1,11 @@
 .footer {
   margin-top: 100px;
   display: flex;
-  min-height: 334px;
+  /* min-height: 332px; */
+  /* max-height: 332px; */
   box-sizing: border-box;
-  background-color: #319b88;
-  padding: 102px 0 90px 289px;
+  background-color: rgb(57, 154, 137);
+  padding: 96px 0 86px 282px;
 }
 
 .mr-138 {
@@ -14,6 +15,7 @@
 .mt-38 {
   margin-top: 38px;
   cursor: pointer;
+  color: white;
 }
 
 .footer_btn .footer_btn {

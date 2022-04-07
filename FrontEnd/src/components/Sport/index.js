@@ -63,7 +63,7 @@ export default function ViewPhoto() {
       {/* 箭头部分 */}
       <div className='isArrow'>
         <div></div>
-        <div className='isRight'>
+        <div className='isRightFd'>
           <div className='isBtn isLeftArrowBg' id='left'></div>
           <div className='isBtn isRightArrowBg isSetGreenBg' id='right'></div>
           <div className="greenBox"></div>
@@ -72,9 +72,9 @@ export default function ViewPhoto() {
       {/* 活动部分 */}
       <div className='isPhoto_Main inner-container' ref={container} id='oBox'>
         <div className='box'>
-          <img className='isImageT' src={require('../../assets/images/wik.jpg')} alt="" />
+          <img className='isImageT' src={require('../../assets/images/wtk.jpg')} alt="" />
           <div className='gameText'>Role-Play game</div>
-          <div className='text'>Who is the Killer!?</div>
+          <div className='text fz-24'>Who is the Killer!?</div>
           <div className='message'>The number of participants was six to eight people, there are five people now, we are all Chinese international students and usually play on weekends</div>
         </div>
 
@@ -82,15 +82,15 @@ export default function ViewPhoto() {
         <div className='box'>
           <img className='isImageT' src={require('../../assets/images/mahjong.jpg')} alt="" />
           <div className='gameText'>Card Game</div>
-          <div className='text'>Mahjong -  3 wait for 1!
+          <div className='text fz-24'>Mahjong -  3 wait for 1!
             URGENT!!!</div>
           <div className='message'>We usually do it on a Saturday afternoon in the CBD and we currently have two ladies and one gentleman.</div>
         </div>
 
         <div className='box'>
-          <img className='isImageT' src={require('../../assets/images/tabletennis.jpg')} alt="" />
+          <img className='isImageT' src={require('../../assets/images/tableTennis.jpg')} alt="" />
           <div className='gameText'>Sport</div>
-          <div className='text'>Table tennis</div>
+          <div className='text fz-24'>Table tennis</div>
           <div className='message'>I'm a newbie , just have fun!</div>
         </div>
 
@@ -98,15 +98,15 @@ export default function ViewPhoto() {
         <div className='box'>
           <img className='isImageT' src={require('../../assets/images/joker.jpg')} alt="" />
           <div className='gameText'>Card game</div>
-          <div className='text'>Dou di zhu(3 people game)</div>
+          <div className='text fz-24'>Dou di zhu(3 people game)</div>
           <div className='message'>My roommate and I both want to play Dou di zhu, and we're waiting for another player. We live near Clayton, welcome to play!</div>
         </div>
 
 
-        <div className='box'>
+        <div className='box isNOMr'>
           <img className='isImageT' src={require('../../assets/images/badminton.jpg')} alt="" />
           <div className='gameText'>Sport</div>
-          <div className='text'>Badminton</div>
+          <div className='text fz-24'>Badminton</div>
           <div className='message'>I am a Chinese student looking for a badminton doubles teammate!</div>
         </div>
       </div>
