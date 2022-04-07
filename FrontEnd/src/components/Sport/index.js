@@ -72,7 +72,7 @@ export default function ViewPhoto() {
       {/* 活动部分 */}
       <div className='isPhoto_Main inner-container' ref={container} id='oBox'>
         <div className='box'>
-          <img className='isImageT' src={require('../../assets/images/wtk.jpg')} alt="" />
+          <img className='isImageT' src={require('../../assets/images/wik.jpg')} alt="" />
           <div className='gameText'>Role-Play game</div>
           <div className='text'>Who is the Killer!?</div>
           <div className='message'>The number of participants was six to eight people, there are five people now, we are all Chinese international students and usually play on weekends</div>
@@ -88,7 +88,7 @@ export default function ViewPhoto() {
         </div>
 
         <div className='box'>
-          <img className='isImageT' src={require('../../assets/images/tableTennis.jpg')} alt="" />
+          <img className='isImageT' src={require('../../assets/images/tabletennis.jpg')} alt="" />
           <div className='gameText'>Sport</div>
           <div className='text'>Table tennis</div>
           <div className='message'>I'm a newbie , just have fun!</div>

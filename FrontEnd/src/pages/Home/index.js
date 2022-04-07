@@ -141,7 +141,7 @@ export default function Home() {
       {/* 登陆后的 */}
       <div className='isLogin'>
         <div className='isLogin-left'>
-          <div className='isLoginAfterImg' style={{ background: `url(${require("../../assets/images/test.jpg")})` }}></div>
+          <div className='isLoginAfterImg' style={{ background: `url(${require("../../assets/images/face.png")})` }}></div>
         </div>
         <div className='isLogin-right'>
           <div className='isNameT'>

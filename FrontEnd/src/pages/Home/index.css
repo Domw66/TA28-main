@@ -189,7 +189,7 @@ div {
 }
 
 .isLogin {
-  display: flex;
+  display:flex;
   padding-left: 10px;
   margin-top: 272px;
   /* height: 400px; */
@@ -200,19 +200,19 @@ div {
 }
 
 .isLogin-left {
-  width: 45%;
+  width: 100%;
   margin-top: 98px;
   display: flex;
   flex-direction: column;
   padding-left: 78px;
+
 }
 
 .isLogin-left .isLoginAfterImg {
   margin-top: -22px;
   width: 173px;
   height: 173px;
-  border-radius: 50%;
-  background-color: red;
+  object-fit: cover;
 }
 
 .isLogin-left .isTitle {
