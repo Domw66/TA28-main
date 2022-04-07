@@ -100,7 +100,9 @@ def init():
 
     result = Query(cur).distinct(param)
 
-    data = [list(x.values())[0] for x in json.loads(result.run())]
+    print(result.run())
+
+    data = [", ".join(list(x.values())) for x in json.loads(result.run())]
 
     return str(data)
 

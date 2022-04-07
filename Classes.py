@@ -18,8 +18,8 @@ class Query:
         "*" : "*",
         "activity_semi_type":'a.activity_semi_type',
         "event_start_time_24hr":"e.event_start_time_24hr",
-        "activities":{"a.activity_type": "activities a"},
-        'suburbs': {"l.suburb": "locations l"}
+        "activities":{"a.activity_type": "activities a", "a.activity_semi_type": "activites a"},
+        'locations': {"l.suburb": "locations l"}
     }
 
     static_dict = {
@@ -74,7 +74,7 @@ class Query:
         return self
 
     def distinct(self, col):
-        self.query = f"SELECT DISTINCT {list(self.key_dict[col].keys())[0]} from {list(self.key_dict[col].values())[0]}"
+        self.query = f"SELECT DISTINCT {', '.join(list(self.key_dict[col].keys()))} from {list(self.key_dict[col].values())[0]}"
         return self
 
     # Run query, return data
