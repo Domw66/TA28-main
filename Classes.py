@@ -3,27 +3,14 @@ import datetime
 
 class Query:
 
-    # Create class dicts for accessing across all instantiations
-
-    key_dict = {
-        "event_name": "e.event_name",
-        "event_date": "e.event_date",
-        "event_start_time": "e.event_start_time_24hr",
-        "participants_count": "e.participants_count",
-        "activity_image_path": "a.activity_image_path",
-        "activity_name": "a.activity_name",
-        "activity_type": "a.activity_type",
-        "suburb": "l.suburb",
-        "address_1": 'l.address_1',
-        "*" : "*",
-        "activity_semi_type":'a.activity_semi_type'
-    }
-
-    static_dict = {
-        "cols" : ["event_name", "activity_name", "activity_type", "participants_count", "location_name", "address_1"],
-        "conds" : ["e.activity_id = a.activity_id", "e.location_id = l.location_id"],
-        "default_cols" : ['activity_image_path', 'event_name', 'event_date', 'event_start_time', 'participants_count']
-    }
+    default_cols = [
+        "a.activity_image_path",
+        "e.event_name",
+        "e.event_date",
+        "e.event_start_time_24hr",
+        "e.participants_count",
+        "l.suburb"
+    ]
 
     def __init__(self, cursor):
         self.query = ""
@@ -40,15 +27,17 @@ class Query:
             return "placeholder date/time"
 
     # Dynamic SQL query with column selection and conditions
-    def dynamic(self, col_list=static_dict['default_cols'], conds=None):
+    def generate_query(self, col_list=default_cols, conds=None):
 
         # Format column selection
-        col_string = ", ".join([self.key_dict[x] for x in col_list])
+        col_string = ", ".join(Query.default_cols)
 
         # If conds is a dict, that means extra conditions have been passed and must be formatted.
         if isinstance(conds, dict):
             if len(conds) > 0:
-                cond_string = " and " + " and ".join([f"{self.key_dict[key]}='{value}'" for key, value in conds.items()])
+                cond_string = " and " + " and ".join(
+                    [f"{key}='{value}'" if key != 'e.event_start_time_24hr' else f"{key} {value}" for key, value in conds.items()]
+                )
             else:
                 cond_string = ""
         else:
@@ -57,13 +46,12 @@ class Query:
         # Generate Query in object attributes
         query = f"SELECT {col_string} " +\
                 "FROM events e, activities a, locations l " + \
-                f"where {' and '.join(self.static_dict['conds'])}{cond_string};"
+                f"where e.activity_id = a.activity_id and e.location_id = l.location_id{cond_string};"
         self.query = query
         return self
 
-    # wrapper for preset common query
-    def static(self):
-        self.dynamic(self.static_dict['cols'], self.static_dict['conds'])
+    def distinct(self, col):
+        self.query = f"SELECT DISTINCT {', '.join(col)} from "
         return self
 
     # Run query, return data
@@ -83,3 +71,67 @@ class Event:
 
     def __repr__(self):
         return "{" + f"Event{self.position}: {', '.join(list(self.__dict__.values())[:-1])}" + "}"
+
+
+class Button:
+
+    clicked_dict = {}
+
+    sql_dict = {
+        'AllActivity': {},
+        'Game': {'a.activity_type': 'Game'},
+        'Sports': {'a.activity_type': 'Sports'},
+        'Party': {'a.activity_type': 'Party'},
+        'Other': {'a.activity_type': 'Other'},
+        'Docklands': {'l.suburb': 'Docklands'},
+        'BoxHill': {'l.suburb': 'Box Hill'},
+        'Melbourne': {'l.suburb': 'Melbourne'},
+        'WestMelbourne': {'l.suburb': 'West Melbourne'},
+        'RolePlay': {'a.activity_semi_type': 'Role-Play'},
+        'Board': {'a.activity_semi_type': 'Board'},
+        'AllLocation': {},
+        'Morning': {'e.event_start_time_24hr': 'between \'00:00:00\' and \'11:59:59\''},
+        'Afternoon': {'e.event_start_time_24hr': 'between \'12:00:00\' and \'16:59:59\''},
+        'Evening': {'e.event_start_time_24hr': 'between \'17:00:00\' and \'23:59:59\''},
+        'AllTime': {}
+    }
+
+    def __init__(self, name, type):
+        self.name = name
+        self.clicked = False
+        self.type = type
+        Button.clicked_dict[self] = self.clicked
+
+    def __repr__(self):
+        return self.name
+
+    def click(self):
+        self.clear_clicks()
+        self.clicked=True
+        self.update_click()
+        return self
+
+    def clear_clicks(self):
+        for key, value in Button.clicked_dict.items():
+            if key.type == self.type:
+                Button.clicked_dict[key] = False
+        return self
+
+    def update_click(self):
+        Button.clicked_dict[self] = self.clicked
+        return self
+
+    def get_data(self, cur):
+        conditions = {}
+        [conditions.update(Button.sql_dict[key.name]) for key, value in Button.clicked_dict.items() if value]
+        result = Query(cur).generate_query(conds=conditions).run()
+        return result
+
+    @staticmethod
+    def format():
+        string = str(["{" + str(key) + ":" + str(value) + "}" for key, value in Button.clicked_dict.items()])
+        return string.replace("'", "")
+
+
+
+
