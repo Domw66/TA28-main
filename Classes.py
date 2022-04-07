@@ -27,7 +27,7 @@ class Query:
             return "placeholder date/time"
 
     # Dynamic SQL query with column selection and conditions
-    def dynamic(self, col_list=default_cols, conds=None):
+    def generate_query(self, col_list=default_cols, conds=None):
 
         # Format column selection
         col_string = ", ".join(Query.default_cols)
@@ -44,13 +44,8 @@ class Query:
         # Generate Query in object attributes
         query = f"SELECT {col_string} " +\
                 "FROM events e, activities a, locations l " + \
-                f"where {' and '.join(self.static_dict['conds'])}{cond_string};"
+                f"where e.activity_id = a.activity_id and e.location_id = l.location_id{cond_string};"
         self.query = query
-        return self
-
-    # wrapper for preset common query
-    def static(self):
-        self.dynamic(self.static_dict['cols'], self.static_dict['conds'])
         return self
 
     def distinct(self, col):
@@ -125,11 +120,10 @@ class Button:
         Button.clicked_dict[self] = self.clicked
         return self
 
-
     def get_data(self, cur):
         conditions = {}
         [conditions.update(Button.sql_dict[key.name]) for key, value in Button.clicked_dict.items() if value]
-        result = Query(cur).dynamic(conds=conditions).run()
+        result = Query(cur).generate_query(conds=conditions).run()
         return result
 
 

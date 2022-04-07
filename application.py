@@ -59,26 +59,6 @@ def get_images():
 @app.route('/api', methods = ["GET", "POST"])
 def api():
 
-    #selection_dict transforms user actions into SQL condition key-value pairs
-    selection_dict = {
-        'clickAll' : {'activity_type':'None', 'activity_semi_type':'None'},
-        'clickGame' : {'activity_type':'Game'},
-        'clickSports' : {'activity_type':'Sports'},
-        'clickParty' : {'activity_type':'Party'},
-        'clickOther' : {'activity_type':'Other'},
-        'clickDocklands' : {'suburb':'Docklands'},
-        'clickBoxHill' : {'suburb':'Box Hill'},
-        'clickMelbourne' : {'suburb':'Melbourne'},
-        'clickWestMelbourne' : {'suburb':'West Melbourne'},
-        'clickRolePlay' : {'activity_semi_type':'Role-Play'},
-        'clickBoard' : {'activity_semi_type':'Board'},
-        'clickAllLocation' : {'suburb':'None'},
-        'clickMorning': {'event_start_time_24hr':'between \'00:00:00\' and \'11:59:59\''},
-        'clickAfternoon': {'event_start_time_24hr':'between \'12:00:00\' and \'16:59:59\''},
-        'clickEvening': {'event_start_time_24hr':'between \'17:00:00\' and \'23:59:59\''},
-        'clickAllTimes': {'event_start_time_24hr':'None'}
-    }
-
     # cursor object to access DB
     cur = mysql.connection.cursor()
 
@@ -94,27 +74,17 @@ def api():
         data = eval(f"b{params[1]}.get_data(cur)")
 
     except:
-        data = Query(cur).static().run()
+        data = Query(cur).generate_query().run()
 
 
     # Create Event object as per Yiwen's specification
     data = [Event(row) for row in json.loads(data)]
     return str(data)
 
-@app.route('/init', methods=['GET','POST'])
+@app.route('/init')
 def init():
-
     return str(Button.clicked_dict)
 
-@app.route('/test')
-def test():
-    print(Button.clicked_dict)
-    arg = list(request.args)[0]
-    print(Button.clicked_dict)
-    bAllActivity.click()
-
-    print(Button.clicked_dict)
-    return arg
 
 
 if __name__ == '__main__':
