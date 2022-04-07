@@ -60,18 +60,13 @@ class Query:
         return json.dumps(self.cursor.fetchall(), default = self.datetime_converter)
 
 class Event:
-
-    count = 0
-
     def __init__(self, row_dict):
         for row in row_dict:
             exec(f"self.{row} = str(row_dict['{row}'])")
         self.position = ""
-        Event.count += 1
 
     def __repr__(self):
         return "{" + f"Event{self.position}: {', '.join(list(self.__dict__.values())[:-1])}" + "}"
-
 
 class Button:
 
@@ -105,28 +100,33 @@ class Button:
     def __repr__(self):
         return self.name
 
+    # The behaviour of the button when clicked
     def click(self):
         self.clear_clicks()
         self.clicked=True
         self.update_click()
         return self
 
+    # Clears the clicks
     def clear_clicks(self):
         for key, value in Button.clicked_dict.items():
             if key.type == self.type:
                 Button.clicked_dict[key] = False
         return self
 
+    # Makes the click dict set the object's click status
     def update_click(self):
         Button.clicked_dict[self] = self.clicked
         return self
 
+    # Fetches the db data for all current clicked filters
     def get_data(self, cur):
         conditions = {}
         [conditions.update(Button.sql_dict[key.name]) for key, value in Button.clicked_dict.items() if value]
         result = Query(cur).generate_query(conds=conditions).run()
         return result
 
+    # Formats the data for the front end
     @staticmethod
     def format():
         string = str(["{" + str(key) + ":" + str(value) + "}" for key, value in Button.clicked_dict.items()])

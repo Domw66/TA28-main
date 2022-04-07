@@ -1,6 +1,6 @@
 import json
 from Classes import Query, Event, Button
-from flask import Flask, render_template, request, send_from_directory, sessions
+from flask import Flask, render_template, request, send_from_directory
 from flask_mysqldb import MySQL
 
 # Start App
@@ -36,6 +36,7 @@ button_list = [
     'Afternoon',
     'Evening'
 ]
+
 for i, btn in enumerate(button_list):
     if i < 5:
         exec(f"b{btn} = Button('{btn}', 'activity')")
@@ -62,6 +63,7 @@ def api():
     # cursor object to access DB
     cur = mysql.connection.cursor()
 
+    # Try/Except block allows blank /api call
     try:
         if list(request.args)[0] == 'refresh':
             Button.clear_clicks()
@@ -70,10 +72,8 @@ def api():
         params = list(request.args.items())[0]
         exec(f"b{params[1]}.{params[0]}()")
         data = eval(f"b{params[1]}.get_data(cur)")
-
     except:
         data = Query(cur).generate_query().run()
-
 
     # Create Event object as per Yiwen's specification
     data = [Event(row) for row in json.loads(data)]
@@ -83,8 +83,6 @@ def api():
 @app.route('/init')
 def init():
     return str(Button.format())
-
-
 
 if __name__ == '__main__':
     app.run()
