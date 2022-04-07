@@ -50,7 +50,8 @@ def api():
         'clickAllLocation' : {'suburb':'None'},
         'clickMorning': {'event_start_time_24hr':'between \'00:00:00\' and \'11:59:59\''},
         'clickAfternoon': {'event_start_time_24hr':'between \'12:00:00\' and \'16:59:59\''},
-        'clickEvening': {'event_start_time_24hr':'between \'17:00:00\' and \'23:59:59\''}
+        'clickEvening': {'event_start_time_24hr':'between \'17:00:00\' and \'23:59:59\''},
+        'clickAllTimes': {'event_start_time_24hr':'None'}
     }
 
     # cursor object to access DB
@@ -70,7 +71,7 @@ def api():
             difference_dict.update({key: value})
 
             # If any 'ALL' value is selected, remove any specific filters
-            if params in ['clickAll', 'clickAllLocation']:
+            if params in ['clickAll', 'clickAllLocation', 'clickAllTimes']:
                 difference_dict.pop(key)
     except:
         pass
