@@ -47,7 +47,10 @@ def api():
         'clickWestMelbourne' : {'suburb':'West Melbourne'},
         'clickRolePlay' : {'activity_semi_type':'Role-Play'},
         'clickBoard' : {'activity_semi_type':'Board'},
-        'clickAllLocation' : {'suburb':'None'}
+        'clickAllLocation' : {'suburb':'None'},
+        'clickMorning': {'event_start_time_24hr':'between \'00:00:00\' and \'11:59:59\''},
+        'clickAfternoon': {'event_start_time_24hr':'between \'12:00:00\' and \'16:59:59\''},
+        'clickEvening': {'event_start_time_24hr':'between \'17:00:00\' and \'23:59:59\''}
     }
 
     # cursor object to access DB

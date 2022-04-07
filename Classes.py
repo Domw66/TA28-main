@@ -16,7 +16,8 @@ class Query:
         "suburb": "l.suburb",
         "address_1": 'l.address_1',
         "*" : "*",
-        "activity_semi_type":'a.activity_semi_type'
+        "activity_semi_type":'a.activity_semi_type',
+        "event_start_time_24hr":"e.event_start_time_24hr"
     }
 
     static_dict = {
@@ -48,7 +49,11 @@ class Query:
         # If conds is a dict, that means extra conditions have been passed and must be formatted.
         if isinstance(conds, dict):
             if len(conds) > 0:
-                cond_string = " and " + " and ".join([f"{self.key_dict[key]}='{value}'" for key, value in conds.items()])
+                cond_string = ""
+                if 'event_start_time_24hr' in conds:
+                    cond_string = " and {0} {1}".format(self.key_dict['event_start_time_24hr'], conds['event_start_time_24hr'])
+                    conds.pop('event_start_time_24hr')
+                cond_string += " and " + " and ".join([f"{self.key_dict[key]}='{value}'" for key, value in conds.items()])
             else:
                 cond_string = ""
         else:
