@@ -78,8 +78,12 @@ class Event:
     def __init__(self, row_dict):
         for row in row_dict:
             exec(f"self.{row} = str(row_dict['{row}'])")
+        #self.time_of_day = self.time_of_day(None)
         self.position = ""
         Event.count += 1
 
     def __repr__(self):
         return "{" + f"Event{self.position}: {', '.join(list(self.__dict__.values())[:-1])}" + "}"
+
+    def time_of_day(self, time):
+        pass
