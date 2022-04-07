@@ -1,6 +1,6 @@
 import json
 from Classes import Query, Event, Button
-from flask import Flask, render_template, request, send_from_directory, sessions
+from flask import Flask, render_template, request, send_from_directory
 from flask_mysqldb import MySQL
 
 # Start App
@@ -75,7 +75,6 @@ def api():
     except:
         data = Query(cur).generate_query().run()
 
-
     # Create Event object as per Yiwen's specification
     data = [Event(row) for row in json.loads(data)]
 
@@ -84,8 +83,6 @@ def api():
 @app.route('/init')
 def init():
     return str(Button.format())
-
-
 
 if __name__ == '__main__':
     app.run()
