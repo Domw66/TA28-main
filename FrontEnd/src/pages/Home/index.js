@@ -78,7 +78,7 @@ export default function Home() {
             <div className='isCenter_right_item'>
               <img className='isIcon isNoMt' src={require("../../assets/images/righttwo.png")} />
               <h2 className='mt-32 fz-24 colorBlack'>More...</h2>
-              <div className='mt-30Text fz-16'>Anything is possible as long as you need someone to be with you.</div>
+              <div className='mt-30Text fz-16 colorBlack'>Anything is possible as long as you need someone to be with you.</div>
             </div>
           </div>
 

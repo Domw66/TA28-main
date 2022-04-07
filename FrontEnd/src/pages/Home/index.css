@@ -111,7 +111,7 @@ div {
   font-size: 16px;
 }
 .colorBlack {
-  color: #333333;
+  color: #333333 !important;
 }
 .fz-24 {
   font-size: 24px;
