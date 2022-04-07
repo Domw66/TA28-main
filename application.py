@@ -68,9 +68,7 @@ def api():
             return "Filters reset"
 
         params = list(request.args.items())[0]
-        print(params)
         exec(f"b{params[1]}.{params[0]}()")
-        print(Button.clicked_dict)
         data = eval(f"b{params[1]}.get_data(cur)")
 
     except:
@@ -79,6 +77,7 @@ def api():
 
     # Create Event object as per Yiwen's specification
     data = [Event(row) for row in json.loads(data)]
+
     return str(data)
 
 @app.route('/init')

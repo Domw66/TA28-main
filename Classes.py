@@ -35,7 +35,9 @@ class Query:
         # If conds is a dict, that means extra conditions have been passed and must be formatted.
         if isinstance(conds, dict):
             if len(conds) > 0:
-                cond_string = " and " + " and ".join([f"{key}='{value}'" for key, value in conds.items()])
+                cond_string = " and " + " and ".join(
+                    [f"{key}='{value}'" if key != 'e.event_start_time_24hr' else f"{key} {value}" for key, value in conds.items()]
+                )
             else:
                 cond_string = ""
         else:
@@ -64,7 +66,6 @@ class Event:
     def __init__(self, row_dict):
         for row in row_dict:
             exec(f"self.{row} = str(row_dict['{row}'])")
-        #self.time_of_day = self.time_of_day(None)
         self.position = ""
         Event.count += 1
 
@@ -129,7 +130,7 @@ class Button:
     @staticmethod
     def format():
         string = str(["{" + str(key) + ":" + str(value) + "}" for key, value in Button.clicked_dict.items()])
-        return string.replace("'","")
+        return string.replace("'", "")
 
 
 
