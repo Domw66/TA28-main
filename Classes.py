@@ -126,6 +126,11 @@ class Button:
         result = Query(cur).generate_query(conds=conditions).run()
         return result
 
+    @staticmethod
+    def format():
+        string = str(["{" + str(key) + ":" + str(value) + "}" for key, value in Button.clicked_dict.items()])
+        return string.replace("'","")
+
 
 
 

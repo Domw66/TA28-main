@@ -83,7 +83,7 @@ def api():
 
 @app.route('/init')
 def init():
-    return str(Button.clicked_dict)
+    return str(Button.format())
 
 
 
