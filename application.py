@@ -1,5 +1,5 @@
 import json
-from Classes import Query, Event
+from Classes import Query, Event, Button
 from flask import Flask, render_template, request, send_from_directory, sessions
 from flask_mysqldb import MySQL
 
@@ -18,6 +18,31 @@ mysql = MySQL(app)
 
 # difference_dict tracks changes to current filters
 difference_dict = {}
+
+# instantiate buttons
+button_list = [
+    'AllActivity',
+    'Game',
+    'Sports',
+    'Party',
+    'Other',
+    'AllLocation',
+    'Docklands',
+    'BoxHill',
+    'Melbourne',
+    'WestMelbourne',
+    'AllTime',
+    'Morning',
+    'Afternoon',
+    'Evening'
+]
+for i, btn in enumerate(button_list):
+    if i < 5:
+        exec(f"b{btn} = Button('{btn}', 'activity')")
+    if i > 4 and i < 10:
+        exec(f"b{btn} = Button('{btn}', 'location')")
+    if i > 9:
+        exec(f"b{btn} = Button('{btn}', 'time')")
 
 #Render Homepage
 @app.route('/')
@@ -57,54 +82,39 @@ def api():
     # cursor object to access DB
     cur = mysql.connection.cursor()
 
-    if list(request.args)[0] == 'refresh':
-        difference_dict.clear()
-        return "Filters reset"
-
-    # try/except block allows /api with no queries to run
     try:
-        # Turn parameters into selection_dict keys
-        params = "".join(list(request.args.items())[0])
+        if list(request.args)[0] == 'refresh':
+            Button.clear_clicks()
+            return "Filters reset"
 
-        # Update difference dict so that newest request is stored in memory
-        for key, value in selection_dict[params].items():
-            difference_dict.update({key: value})
+        params = list(request.args.items())[0]
+        print(params)
+        exec(f"b{params[1]}.{params[0]}()")
+        print(Button.clicked_dict)
+        data = eval(f"b{params[1]}.get_data(cur)")
 
-            # If any 'ALL' value is selected, remove any specific filters
-            if params in ['clickAll', 'clickAllLocation', 'clickAllTimes']:
-                difference_dict.pop(key)
     except:
-        pass
+        data = Query(cur).static().run()
 
-    print(difference_dict)
-
-    # Access database as per query class
-    result = Query(cur).dynamic(conds=difference_dict)
-
-    print(result)
-    print(result.run())
 
     # Create Event object as per Yiwen's specification
-    data = [Event(row) for row in json.loads(result.run())]
+    data = [Event(row) for row in json.loads(data)]
     return str(data)
 
 @app.route('/init', methods=['GET','POST'])
 def init():
 
-    # cursor object to access DB
-    cur = mysql.connection.cursor()
+    return str(Button.clicked_dict)
 
-    print(request.args)
+@app.route('/test')
+def test():
+    print(Button.clicked_dict)
+    arg = list(request.args)[0]
+    print(Button.clicked_dict)
+    bAllActivity.click()
 
-    param=list(request.args)[0]
-
-    result = Query(cur).distinct(param)
-
-    print(result.run())
-
-    data = [", ".join(list(x.values())) for x in json.loads(result.run())]
-
-    return str(data)
+    print(Button.clicked_dict)
+    return arg
 
 
 if __name__ == '__main__':
