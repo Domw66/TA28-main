@@ -28,7 +28,7 @@ export default function Header() {
         <NavLink className={({ isActive }) => { return pathname === '/myAccount' ? 'isActive' : 'isHeader_right_menu' }} to="/myAccount">My account</NavLink>
         <NavLink className={({ isActive }) => { return pathname === '/contactUs' ? 'isActive' : 'isHeader_right_menu' }} to="/contactUs">Contact us</NavLink>
         <NavLink className={({ isActive }) => { return pathname === '/aboutus' ? 'isActive' : 'isHeader_right_menu' }} to="/aboutus">About us</NavLink>
-        <div className='isHeader_right_btn'>Sign up</div>
+        <div className='isHeader_right_btn'>Sing up</div>
       </div>
 
 
