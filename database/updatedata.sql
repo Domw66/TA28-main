@@ -1,3 +1,5 @@
+alter table events drop primary key, add primary key(event_id,activity_id,location_id);
+
 ALTER TABLE Activities
 ADD COLUMN activity_semi_type varchar(50) AFTER activity_type;
 
