@@ -6,6 +6,8 @@
   flex-wrap: wrap;
   margin-right: 39px;
   padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .pageTwoBox {
@@ -15,7 +17,9 @@
 }
 
 .isImage {
-  min-width: 370px;
+  /* min-width: 370px; */
+  /* max-width: 370px; */
+  min-width: 303px;
   max-width: 370px;
   min-height: 288px;
   max-height: 288px;
@@ -26,8 +30,9 @@
 
 .gameText {
   margin-top: 34px;
-  font-size: 11px;
+  font-size: 16px;
   color: #333333;
+  font-weight: 700;
 }
 
 .text {
@@ -35,10 +40,3 @@
   font-size: 24px;
 }
 
-.message {
-  font-size: 17px;
-  line-height: 34px;
-  max-width: 300px;
-  margin-top: 63px;
-  color: #666666;
-}

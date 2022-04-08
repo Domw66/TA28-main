@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Navigate, NavLink, Outlet, useOutlet } from 'react-router-dom'
 import './index.css'
-import { getList } from '../../api/aboutUs'
+// import { getList } from '../../api/aboutUs'
 
 import ActiveList from '../../components/ActiveList'
 export default function Home() {
@@ -13,6 +13,11 @@ export default function Home() {
   const [allBg, setAllBg] = React.useState(false)
   const [MelbourneBg, setMelbourneBg] = React.useState(false)
   const [RichmondBg, setRichmondBg] = React.useState(false)
+  const [PartyBg, setPartyBg] = React.useState(false)
+  const [OtherBg, setOtherBg] = React.useState(false)
+  const [SportsBg, setSportsBg] = React.useState(false)
+  const [RoBg, setRoBg] = React.useState(false)
+  const [BoaBg, setBoaBg] = React.useState(false)
 
 
 
@@ -33,6 +38,21 @@ export default function Home() {
     }
     if (isCheck == 'Melbourne') {
       setMelbourneBg(!MelbourneBg)
+    }
+    if (isCheck == 'Party') {
+      setPartyBg(!PartyBg)
+    }
+    if (isCheck == 'Other') {
+      setOtherBg(!OtherBg)
+    }
+    if (isCheck == 'Sports') {
+      setSportsBg(!SportsBg)
+    }
+    if (isCheck == 'Ro') {
+      setRoBg(!RoBg)
+    }
+    if (isCheck == 'Boa') {
+      setBoaBg(!BoaBg)
     }
 
 
@@ -87,10 +107,10 @@ export default function Home() {
         <div className='sixroundArrBg'></div>
         <div className='left'>
           <div className='fz-64'>Provide our</div>
-          <div className='fz-64 mt-40'>Best Service</div>
+          <div className='fz-64 mt-40'>best service</div>
           <div className='fz-64 mt-40'>IT solutions</div>
-          <div className='mt-31 fz-16'>Bring people together with Gathero
-            It’s easy to join in events you love, gethering palyer and quickly make new friends~ build your professional network, or just have some fun.</div>
+          <div className='mt-31 fz-16'>Bring people together with Gathero.
+            It’s easy to join in events you love, gethering palyer and quickly make new friends, build your professional network, or just have some fun.</div>
         </div>
         <img className='header_img' src={require('../../assets/images/pageNo2.png')} />
       </div>
@@ -98,7 +118,7 @@ export default function Home() {
       {/* 搜索区域 */}
       <div className='isSearch'>
         <div className='tip'>Searching activities</div>
-        <div className='title fz-48T'>Find out what you want</div>
+        <div className='title fz-48T'>Find events near you</div>
         <div className='isIpt'>
           <input className='ipt' type="text" placeholder='search' />
           <div className='btn'></div>
@@ -186,12 +206,12 @@ export default function Home() {
                 </div>
                 <div className='son'>
                   <div className='mt-44AndRound isMt-21'>
-                    <div>Role-play games</div>
-                    <div className='isRound isGard'></div>
+                    <div className='isChildrenText'>Role-play games</div>
+                    <div className={RoBg ? 'isCheck isRound' : 'isRound isGard'} onClick={() => isSelect('Ro')}></div>
                   </div>
                   <div className='mt-44AndRound isMt-21'>
-                    <div>Boardgames</div>
-                    <div className='isRound isGard'></div>
+                    <div className='isChildrenText'>Boardgames</div>
+                    <div className={BoaBg ? 'isCheck isRound' : 'isRound isGard'} onClick={() => isSelect('Boa')}></div>
                   </div>
                 </div>
               </div>
@@ -201,15 +221,15 @@ export default function Home() {
 
               <div className='mt-44AndRound isMt-21'>
                 <div>Sports</div>
-                <div className='isRound isGard isMt-21'></div>
+                <div className={SportsBg ? 'isCheck isRound' : 'isRound isGard'} onClick={() => isSelect('Sports')}></div>
               </div>
               <div className='mt-44AndRound isMt-21'>
                 <div>Party</div>
-                <div className='isRound isGard'></div>
+                <div className={PartyBg ? 'isCheck isRound' : 'isRound isGard'} onClick={() => isSelect('Party')}></div>
               </div>
               <div className='mt-44AndRound isMt-21'>
                 <div>Other</div>
-                <div className='isRound isGard'></div>
+                <div className={OtherBg ? 'isCheck isRound' : 'isRound isGard'} onClick={() => isSelect('Other')}></div>
               </div>
 
 

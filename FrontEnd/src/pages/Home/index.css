@@ -47,7 +47,8 @@ div {
   position: absolute;
   background-size: cover;
   bottom: 33px;
-  left: 685px;
+  /* left: 685px; */
+  left: 605px;
 }
 
 .tworoundArrBg {
@@ -83,7 +84,7 @@ div {
 
 
 .isImg {
-  min-width: 733px;
+  min-width: 640px;
   max-width: 733px;
   background: url(../../assets/images/main_left.jpg);
   background-size: cover;
@@ -111,7 +112,7 @@ div {
   font-size: 16px;
 }
 .colorBlack {
-  color: #333333;
+  color: #333333 !important;
 }
 .fz-24 {
   font-size: 24px;
@@ -155,7 +156,7 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
 .isCenter_left {
   margin-top: 150px;
   /* max-width: 50%; */
-  max-width: 413px;
+  max-width: 40%;
 }
 
 .isCenter_left .isBtn {
@@ -170,9 +171,10 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
 }
 
 .isCenter_right {
-  margin-left: 220px;
+  margin-left: 70px;
   min-width: 413px;
   display: flex;
+  max-width: 40%;
 }
 
 .isCenter_right_item {
@@ -215,6 +217,7 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
   padding-bottom: 29px;  
   position: relative;
   justify-content:space-between;
+  padding-right: 216px;
 }
 .isCreate {
   padding-left: 141px;
@@ -251,7 +254,17 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
   color: white;
 }
 .fz-48 {
+  font-family: 'Raleway';
+  font-style: normal;
   font-size: 48px;
+  line-height: 48px;
+}
+
+.fz-64 {
+  font-family:'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
 }
 .isLogin-left .isTip {
   margin-top: 43px;
@@ -260,7 +273,7 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
 }
 
 .isLogin-right {
-  width: 50%;
+  width: 53%;
 }
 
 .isLogin-right .isName {
@@ -338,7 +351,9 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
   border-radius: 8px;
   background-color: #fca100;
   color: white;
-  margin-left: 160px;
+  /* margin-left: 160px; */
+  margin-left: 400px;
+  
 }
 
 .loginFotter .isLoginBtnT {

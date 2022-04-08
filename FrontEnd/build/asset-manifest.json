@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fe04e6f3.css",
+    "main.js": "/static/js/main.e4bd27a6.js",
+    "static/media/main_left.jpg": "/static/media/main_left.39e5cfa93a512c952417.jpg",
+    "static/media/pageNo2.png": "/static/media/pageNo2.bbaf0e1cf3788bbca00a.png",
+    "static/media/joker.jpg": "/static/media/joker.3b5e6f69164772267a26.jpg",
+    "static/media/joker2.jpg": "/static/media/joker2.8090dce0bcfe2432522a.jpg",
+    "static/media/mahjong.jpg": "/static/media/mahjong.0a7057e423a20ca6d164.jpg",
+    "static/media/tableTennis.jpg": "/static/media/tableTennis.575b5cbda625e90887e2.jpg",
+    "static/media/badminton.jpg": "/static/media/badminton.65938dcb208e68d8c800.jpg",
+    "static/media/wtk2.jpg": "/static/media/wtk2.8d0d192cad8bf15e2e69.jpg",
+    "static/media/wtk.jpg": "/static/media/wtk.b454bc368ec13c68f4fd.jpg",
+    "index.html": "/index.html",
+    "main.fe04e6f3.css.map": "/static/css/main.fe04e6f3.css.map",
+    "main.e4bd27a6.js.map": "/static/js/main.e4bd27a6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe04e6f3.css",
+    "static/js/main.e4bd27a6.js"
+  ]
+}

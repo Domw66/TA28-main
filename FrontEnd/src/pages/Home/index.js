@@ -27,12 +27,12 @@ export default function Home() {
         <div className='isRight'>
           <div>
             <h1 className='fz-48'>Connections with</h1>
-            <h1 className='mt-40 fz-48'>Chinese International</h1>
+            <h1 className='mt-40 fz-48'>Chinese international</h1>
             <h1 className='mt-40 fz-48'>students</h1>
-            <div className='mt-40 mt-40Text'>Whatever you're looking for, Gathero can help. Don't worry about you could not finding the Chinese culture activities in Australia. Chinese international student use Gathero to meet new people, make friends, find support, connect with communities in  Chinese cultrue area. .</div>
+            <div className='mt-40 mt-40Text'>New to Australia from China to study? Hard to meet people and make friends? International students use Gathero to meet new people, make friends, find support, and connect with Chinese communities.</div>
           </div>
 
-          <div className='isRight_btn'>start your journy</div>
+          <div className='isRight_btn' onClick={goActivites}>Start your journy</div>
           <div className='isGreenBox'></div>
         </div>
         <div className='isOneRoundArr'></div>
@@ -45,7 +45,7 @@ export default function Home() {
           <div>Different Activities</div>
           <h1 className='fz-48'>Still worried</h1>
           <h1 className='mt-30 fz-48'>about gathering</h1>
-          <h1 className='mt-30'>friends ?</h1>
+          <h1 className='mt-30 fz-48'>friends ?</h1>
           <div className='mt-32Text fz-16 colorBlack'>
             Want to play table tennis but have no partner? Want to play mahjong but can't get anyone together? It doesn't matter, our platform will give you chance to gather people! Whether you want to organize or participate, you can find what you are looking for.
           </div>
@@ -59,7 +59,7 @@ export default function Home() {
           <div className='isCenter_right_leftItem'>
             <div className='isCenter_right_item bgShadow'>
               <img className='isIcon isNoMt' src={require("../../assets/images/leftone.png")} />
-              <h2 className='mt-32 fz-24'>ExerCises</h2>
+              <h2 className='mt-32 fz-24'>Exercises</h2>
               <div className='mt-30Text fz-16 colorBlack'>Basketball, badminton, table tennis, even if you just wanna someone for a morning jog, you'll find a partner with us.</div>
             </div>
             <div className='isCenter_right_item'>
@@ -78,7 +78,7 @@ export default function Home() {
             <div className='isCenter_right_item'>
               <img className='isIcon isNoMt' src={require("../../assets/images/righttwo.png")} />
               <h2 className='mt-32 fz-24 colorBlack'>More...</h2>
-              <div className='mt-30Text fz-16'>Anything is possible as long as you need someone to be with you.</div>
+              <div className='mt-30Text fz-16 colorBlack'>Anything is possible as long as you need someone to be with you.</div>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ export default function Home() {
 
           <div className='loginFotter'>
             <div></div>
-            <div className='isLoginBtn'>login</div>
+            <div className='isLoginBtn'>Login</div>
           </div>
 
         </div>

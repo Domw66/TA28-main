@@ -17,6 +17,9 @@
   cursor: pointer;
   color: white;
 }
+.isSetBgGreen {
+  background-color: green;
+}
 
 .footer_btn .footer_btn {
   display: flex;

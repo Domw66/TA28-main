@@ -21,7 +21,7 @@ background-size:cover;
 }
 .isHeader_right {
   margin-right: 90px;
-  max-width: 53%;
+  max-width: 61%;
   display: flex;
   padding-left: 35px;
   align-items: center;
@@ -31,7 +31,7 @@ background-size:cover;
   font-size: 20px;
   color: black;
   margin-right: 30px;
-  min-width: 130px;
+  /* min-width: 130px; */
   max-width: 130px;
 }
 .isHeader_right_btn {

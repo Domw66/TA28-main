@@ -75,7 +75,8 @@
 .header .header_img {
   position: absolute;
   top: 87px;
-  right: -270px;
+  /* right: -270px; */
+  right: -230px;
   bottom: 116px;
   /* max-width: 30%; */
   min-width: 504px;
@@ -86,11 +87,14 @@
 
 .fz-64 {
   font-size: 64px;
+  line-height: 50px;
   color: white;
 }
 
 .fz-16 {
-  font-size: 20px;
+  font-size: 16px;
+  font-family: 'Raleway';
+  font-style: normal;
   color: white;
 }
 
@@ -154,27 +158,31 @@
 .isList {
   width: 100%;
   margin-top: 26px;
+  min-height: 1200px;
   display: flex;
-  padding-left: 278px;
+  padding-left: 192px;
 }
 
 .isList .left {
   width: 60%;
   display: flex;
   flex-wrap: wrap;
-  margin-right: 39px;
+  justify-content: space-between;
+  /* margin-right: 150px; */
+  /* padding-left: 200px; */
   padding-top: 40px;
 }
 
 .pageTwoBox {
+  flex: 1;
   margin-right: 20px;
   min-height: 463px;
   box-sizing: border-box;
 }
 
 .isImage {
-  min-width: 370px;
-  max-width: 370px;
+  min-width: 280px;
+  max-width: 280px;
   min-height: 288px;
   max-height: 288px;
   margin-right: 32px;
@@ -182,31 +190,27 @@
 }
 
 
-.gameText {
-  margin-top: 34px;
-  font-size: 11px;
-  color: #333333;
-}
-
-.text {
-  margin-top: 25px;
-  font-size: 24px;
-}
-
-.message {
-  font-size: 17px;
+.messageT {
+  font-size: 16px;
+  font-weight: 700;
   line-height: 34px;
   max-width: 300px;
-  margin-top: 63px;
+  margin-top: 20px;
   color: #666666;
 }
 
+
+
 .isList .right {
-  width: 30%;
+  /* width: 30%; */
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   margin-right: 400px;
+  min-width: 372px;
+  max-width: 372px;
+  min-height: 397px;
+  max-height: 397px;
 }
 
 .isList .right .box {
@@ -263,9 +267,13 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
 }
 
 .three {
+  min-width: 372px;
+  max-width: 372px;
   display: flex;
   flex-direction: column;
   max-height: 100px !important;
+  background: #FFFFFF;
+  box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
 }
 
 .time-box {
@@ -331,4 +339,9 @@ box-shadow: 0px 25px 55px rgba(126, 126, 126, 0.15);
 }
 .isWhiteText {
   color: white;
+}
+.isChildrenText {
+  font-size: 13px;
+line-height: 24px;
+color: rgba(51, 51, 51, 0.83);
 }

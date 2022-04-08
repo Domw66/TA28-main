@@ -37,9 +37,9 @@ export default function Header() {
       </dl>
       
     </div>
-    <div className='three'>
+    <div className=''>
       <dl className='footer_btn'>
-        <dt className='mt-38'>Our Website Designer</dt>
+      <dt className='mt-38'>Our Website Designer</dt>
         <div className='btnArr mt-38'>
           <div className='ft_btn'>YW</div>
           <div className='ft_btn'>YL</div>
