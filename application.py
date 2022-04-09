@@ -156,7 +156,7 @@ def filter_page():
         "Data": []
     }
     response_template['TotalPage'] = total_pages
-    response_template['PageNum'] = page_num
+    response_template['PageNum'] = 0 if total_pages == 0 else page_num
     response_template['Data'] = cur.fetchall()
 
     return json.dumps(response_template, cls=DateTimeEncoder)
