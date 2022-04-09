@@ -41,11 +41,11 @@ button_list = [
 
 for i, btn in enumerate(button_list):
     if i < 5:
-        exec(f"b{btn} = Button('{btn}', 'activity')")
+        exec(f"b{btn} = Button('{btn}', 'Activity_type')")
     if i > 4 and i < 10:
-        exec(f"b{btn} = Button('{btn}', 'location')")
+        exec(f"b{btn} = Button('{btn}', 'Location')")
     if i > 9:
-        exec(f"b{btn} = Button('{btn}', 'time')")
+        exec(f"b{btn} = Button('{btn}', 'Time')")
 
 class DateTimeEncoder(JSONEncoder):
         #Override the default method
@@ -118,6 +118,20 @@ def filter_page():
             query_string_parameters[mandatory_param] = input_request[mandatory_param]    
     print(query_string_parameters)
 
+    try:
+        if list(request.args)[0] == 'refresh':
+            Button.clicked_dict.clear()
+            return ""
+    except IndexError:
+        pass
+
+    for key, value in dict(request.args).items():
+        if key not in ['PageNum', 'PageSize']:
+            exec(f"b{value}.click()")
+    print(Button.clicked_dict)
+
+
+
     page_count_sql = """
     select ceil(count(distinct e.event_image_path, e.event_name, 
     e.event_date, e.event_start_time_24hr, e.participants_count, l.suburb)/{0}) as page_count 
@@ -159,7 +173,9 @@ def filter_page():
     }
     response_template['TotalPage'] = total_pages
     response_template['PageNum'] = 0 if total_pages == 0 else page_num
-    response_template['Data'] = data
+    response_template['Data'] = json.loads(json.dumps(
+        Button.get_data(cur, page_num, page_size)).replace('\\"', '\'')
+                                           )
 
     return json.dumps(response_template, cls=DateTimeEncoder)
 

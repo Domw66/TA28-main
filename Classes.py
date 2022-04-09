@@ -4,7 +4,7 @@ import datetime
 class Query:
 
     default_cols = [
-        "a.activity_image_path",
+        "e.event_image_path",
         "e.event_name",
         "e.event_date",
         "e.event_start_time_24hr",
@@ -27,7 +27,7 @@ class Query:
             return "placeholder date/time"
 
     # Dynamic SQL query with column selection and conditions
-    def generate_query(self, col_list=default_cols, conds=None):
+    def generate_query(self, num, pgs, col_list=default_cols, conds=None):
 
         # Format column selection
         col_string = ", ".join(Query.default_cols)
@@ -46,7 +46,7 @@ class Query:
         # Generate Query in object attributes
         query = f"SELECT {col_string} " +\
                 "FROM events e, activities a, locations l " + \
-                f"where e.activity_id = a.activity_id and e.location_id = l.location_id{cond_string};"
+                f"where e.activity_id = a.activity_id and e.location_id = l.location_id{cond_string} limit {num}, {pgs};"
         self.query = query
         return self
 
@@ -120,10 +120,11 @@ class Button:
         return self
 
     # Fetches the db data for all current clicked filters
-    def get_data(self, cur):
+    @staticmethod
+    def get_data(cur, pgn, pgs):
         conditions = {}
         [conditions.update(Button.sql_dict[key.name]) for key, value in Button.clicked_dict.items() if value]
-        result = Query(cur).generate_query(conds=conditions).run()
+        result = Query(cur).generate_query(conds=conditions, num=pgn, pgs=pgs).run()
         return result
 
     # Formats the data for the front end
