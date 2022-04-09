@@ -50,8 +50,8 @@ for i, btn in enumerate(button_list):
 class DateTimeEncoder(JSONEncoder):
         #Override the default method
         def default(self, obj):
-            if isinstance(obj, (datetime.date, datetime.datetime, datetime.time)):
-                return obj.isoformat()
+            if isinstance(obj, (datetime.date, datetime.datetime, datetime.timedelta)):
+                return obj.__str__()
 
 #Render Homepage
 @app.route('/')
@@ -149,6 +149,8 @@ def filter_page():
     records_sql = records_sql.format((page_num - 1) * page_size, page_num * page_size, filter_string)
     print(records_sql)
     cur.execute(records_sql)
+    data = cur.fetchall()
+    print(data)
 
     response_template = { 
         "TotalPage": None, 
@@ -157,7 +159,7 @@ def filter_page():
     }
     response_template['TotalPage'] = total_pages
     response_template['PageNum'] = 0 if total_pages == 0 else page_num
-    response_template['Data'] = cur.fetchall()
+    response_template['Data'] = data
 
     return json.dumps(response_template, cls=DateTimeEncoder)
 
