@@ -108,7 +108,7 @@ def filter_page():
     input_request = request.args
     query_string_parameters = {}
     mandatory_params = ['Activity_type', 'Location', 'Time', 'PageNum', 'PageSize']
-    default_values =  {'Activity_type': 'AllActivity', 'Location': 'AllLocation', 'Time': 'AllTime', 'PageNum' : '1', 'PageSize' : '5'}
+    default_values =  {'Activity_type': 'AllActivity', 'Location': 'AllLocation', 'Time': 'AllTime', 'PageNum' : '1', 'PageSize' : '6'}
     timeDict = {'Morning':'between \'00:00:00\' and \'11:59:59\'', 'Afternoon':'between \'12:00:00\' and \'16:59:59\'', 'Evening':'between \'17:00:00\' and \'23:59:59\''}
 
     for mandatory_param in mandatory_params:
@@ -156,7 +156,7 @@ def filter_page():
         "Data": []
     }
     response_template['TotalPage'] = total_pages
-    response_template['PageNum'] = page_num
+    response_template['PageNum'] = 0 if total_pages == 0 else page_num
     response_template['Data'] = cur.fetchall()
 
     return json.dumps(response_template, cls=DateTimeEncoder)
