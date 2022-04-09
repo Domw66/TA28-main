@@ -16,4 +16,4 @@ Research shows that international students feel socially isolated due to loss of
 This is associated with depressive and anxious symptoms, so we hope to make it less likely that Chinese students will 
 develop these conditions by providing a simple platform to meet friends and build community.
 
-### The current state is iteration 1 of the build
+### The current state is iteration 1 of the build 
