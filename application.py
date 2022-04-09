@@ -50,7 +50,7 @@ for i, btn in enumerate(button_list):
 class DateTimeEncoder(JSONEncoder):
         #Override the default method
         def default(self, obj):
-            if isinstance(obj, (datetime.date, datetime.datetime)):
+            if isinstance(obj, (datetime.date, datetime.datetime, datetime.time)):
                 return obj.isoformat()
 
 #Render Homepage
@@ -109,6 +109,8 @@ def filter_page():
     query_string_parameters = {}
     mandatory_params = ['Activity_type', 'Location', 'Time', 'PageNum', 'PageSize']
     default_values =  {'Activity_type': 'AllActivity', 'Location': 'AllLocation', 'Time': 'AllTime', 'PageNum' : '1', 'PageSize' : '5'}
+    timeDict = {'Morning':'between \'00:00:00\' and \'11:59:59\'', 'Afternoon':'between \'12:00:00\' and \'16:59:59\'', 'Evening':'between \'17:00:00\' and \'23:59:59\''}
+
     for mandatory_param in mandatory_params:
         if mandatory_param not in input_request:
             query_string_parameters[mandatory_param] = default_values[mandatory_param]
@@ -119,22 +121,34 @@ def filter_page():
     page_count_sql = """
     select ceil(count(distinct e.event_image_path, e.event_name, 
     e.event_date, e.event_start_time_24hr, e.participants_count, l.suburb)/{0}) as page_count 
-    from events e, locations l 
-    where e.location_id = l.location_id; 
+    from events e, locations l, activities a  
+    where e.location_id = l.location_id and e.activity_id = a.activity_id {1}; 
     """
-    cur.execute(page_count_sql.format(query_string_parameters['PageSize']))
+    filter_string = ''
+    if query_string_parameters['Activity_type'] != default_values['Activity_type']:
+        filter_string += f" and a.activity_type = '{query_string_parameters['Activity_type']}'"
+    if query_string_parameters['Location'] != default_values['Location']:
+        filter_string += f" and l.suburb = '{query_string_parameters['Location']}'"
+    if query_string_parameters['Time'] != default_values['Time']:
+        filter_string += f" and e.event_start_time_24hr {timeDict[query_string_parameters['Time']]}"    
+
+    page_count_sql = page_count_sql.format(query_string_parameters['PageSize'], filter_string)
+    print(page_count_sql)
+    cur.execute(page_count_sql)
     row = cur.fetchone()
     total_pages = int(row['page_count'])
 
     records_sql = """
     select distinct e.event_image_path, e.event_name, 
     e.event_date, e.event_start_time_24hr, e.participants_count, l.suburb 
-    from events e, locations l 
-    where e.location_id = l.location_id limit {0}, {1}; 
+    from events e, locations l, activities a  
+    where e.location_id = l.location_id and e.activity_id = a.activity_id {2} limit {0}, {1}; 
     """
     page_num = int(query_string_parameters['PageNum'])
     page_size = int(query_string_parameters['PageSize'])
-    cur.execute(records_sql.format((page_num - 1) * page_size, page_num * page_size))
+    records_sql = records_sql.format((page_num - 1) * page_size, page_num * page_size, filter_string)
+    print(records_sql)
+    cur.execute(records_sql)
 
     response_template = { 
         "TotalPage": None, 
