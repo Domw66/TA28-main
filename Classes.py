@@ -125,7 +125,7 @@ class Button:
         conditions = {}
         [conditions.update(Button.sql_dict[key.name]) for key, value in Button.clicked_dict.items() if value]
         result = Query(cur).generate_query(conds=conditions, num=pgn, pgs=pgs).run()
-        return result
+        return json.loads(result)
 
     # Formats the data for the front end
     @staticmethod

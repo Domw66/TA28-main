@@ -173,9 +173,7 @@ def filter_page():
     }
     response_template['TotalPage'] = total_pages
     response_template['PageNum'] = 0 if total_pages == 0 else page_num
-    response_template['Data'] = json.loads(json.dumps(
-        Button.get_data(cur, page_num, page_size)).replace('\\"', '\'')
-                                           )
+    response_template['Data'] = Button.get_data(cur, (page_num - 1) * page_size, page_num * page_size)
 
     return json.dumps(response_template, cls=DateTimeEncoder)
 
