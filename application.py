@@ -65,7 +65,7 @@ def index():
 
 # Render image API
 @app.route('/images', methods=['GET','POST'])
-@cross_origin()
+@cross_origin(origin='*')
 def get_images():
     image_ref = list(request.args)[0]
     return send_from_directory(path=image_ref, directory='FrontEnd/src/assets/images/')
