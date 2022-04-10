@@ -4,10 +4,12 @@ from json import JSONEncoder
 from Classes import Query, Event, Button
 from flask import Flask, render_template, request, send_from_directory, redirect, current_app
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 from functools import wraps
 
 # Start App
 app = Flask(__name__)
+CORS(app)
 
 # Input app configs
 app.config['MYSQL_HOST'] = 'ta28.mysql.database.azure.com'
@@ -48,19 +50,6 @@ for i, btn in enumerate(button_list):
     if i > 9:
         exec(f"b{btn} = Button('{btn}', 'Time')")
 
-# https://gist.github.com/aisipos/1094140
-def support_jsonp(f):
-    """Wraps JSONified output for JSONP"""
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        callback = request.args.get('callback', False)
-        if callback:
-            content = str(callback) + '(' + str(f(*args,**kwargs).data) + ')'
-            return current_app.response_class(content, mimetype='application/javascript')
-        else:
-            return f(*args, **kwargs)
-    return decorated_function
-
 class DateTimeEncoder(JSONEncoder):
         #Override the default method
         def default(self, obj):
@@ -70,7 +59,7 @@ class DateTimeEncoder(JSONEncoder):
 #Render Homepage
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', flask_token='ta28')
 
 # Render image API
 @app.route('/images', methods=['GET','POST'])
@@ -110,13 +99,11 @@ def api():
 
 #send all Button information
 @app.route('/init')
-@support_jsonp
 def init():
     return str(Button.format())
 
 # Render general data  API
 @app.route('/filter_page', methods = ["GET", "POST"])
-@support_jsonp
 def filter_page():
 
     # cursor object to access DB
