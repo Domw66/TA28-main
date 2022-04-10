@@ -2,7 +2,7 @@ import json
 import datetime
 from json import JSONEncoder
 from Classes import Query, Event, Button
-from flask import Flask, render_template, request, send_from_directory, redirect, current_app
+from flask import Flask, render_template, request, Response, send_from_directory, redirect, current_app
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 from flask_cors import cross_origin
@@ -180,7 +180,7 @@ def filter_page():
     response_template['PageNum'] = 0 if total_pages == 0 else page_num
     response_template['Data'] = Button.get_data(cur, page_num, page_size)
 
-    return json.dumps(response_template, cls=DateTimeEncoder)
+    return Response(json.dumps(response_template, cls=DateTimeEncoder), headers={"Access-Control-Allow-Origin":"*"})
 
 if __name__ == '__main__':
     app.run()
