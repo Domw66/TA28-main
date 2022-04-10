@@ -2,8 +2,9 @@ import json
 import datetime
 from json import JSONEncoder
 from Classes import Query, Event, Button
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request, send_from_directory, redirect, current_app
 from flask_mysqldb import MySQL
+from functools import wraps
 
 # Start App
 app = Flask(__name__)
@@ -46,6 +47,19 @@ for i, btn in enumerate(button_list):
         exec(f"b{btn} = Button('{btn}', 'Location')")
     if i > 9:
         exec(f"b{btn} = Button('{btn}', 'Time')")
+
+# https://gist.github.com/aisipos/1094140
+def support_jsonp(f):
+    """Wraps JSONified output for JSONP"""
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        callback = request.args.get('callback', False)
+        if callback:
+            content = str(callback) + '(' + str(f(*args,**kwargs).data) + ')'
+            return current_app.response_class(content, mimetype='application/javascript')
+        else:
+            return f(*args, **kwargs)
+    return decorated_function
 
 class DateTimeEncoder(JSONEncoder):
         #Override the default method
@@ -96,11 +110,13 @@ def api():
 
 #send all Button information
 @app.route('/init')
+@support_jsonp
 def init():
     return str(Button.format())
 
 # Render general data  API
 @app.route('/filter_page', methods = ["GET", "POST"])
+@support_jsonp
 def filter_page():
 
     # cursor object to access DB
@@ -173,7 +189,7 @@ def filter_page():
     }
     response_template['TotalPage'] = total_pages
     response_template['PageNum'] = 0 if total_pages == 0 else page_num
-    response_template['Data'] = Button.get_data(cur, (page_num - 1) * page_size, page_num * page_size)
+    response_template['Data'] = Button.get_data(cur, page_num, page_size)
 
     return json.dumps(response_template, cls=DateTimeEncoder)
 
