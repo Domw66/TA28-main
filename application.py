@@ -5,11 +5,12 @@ from Classes import Query, Event, Button
 from flask import Flask, render_template, request, send_from_directory, redirect, current_app
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+from flask_cors import cross_origin
 from functools import wraps
 
 # Start App
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"access-control-allow-origin": "*"}})
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Input app configs
 app.config['MYSQL_HOST'] = 'ta28.mysql.database.azure.com'
@@ -104,6 +105,7 @@ def init():
 
 # Render general data  API
 @app.route('/filter_page', methods = ["GET", "POST"])
+@cross_origin(origins='*')
 def filter_page():
 
     # cursor object to access DB
