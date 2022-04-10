@@ -5,6 +5,7 @@ from Classes import Query, Event, Button
 from flask import Flask, render_template, request, send_from_directory, redirect, current_app
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+from flask_cors import cross_origin
 from functools import wraps
 
 # Start App
@@ -58,16 +59,19 @@ class DateTimeEncoder(JSONEncoder):
 
 #Render Homepage
 @app.route('/')
+@cross_origin()
 def index():
     return render_template('index.html', flask_token='ta28')
 
 # Render image API
 @app.route('/images', methods=['GET','POST'])
+@cross_origin()
 def get_images():
     image_ref = list(request.args)[0]
     return send_from_directory(path=image_ref, directory='FrontEnd/src/assets/images/')
 
 @app.route('/src', methods=['GET','POST'])
+@cross_origin()
 def access_filesystem():
     path = list(request.args)[0]
     print(path)
@@ -75,6 +79,7 @@ def access_filesystem():
 
 # Render general data  API
 @app.route('/api', methods = ["GET", "POST"])
+@cross_origin()
 def api():
 
     # cursor object to access DB
@@ -99,11 +104,13 @@ def api():
 
 #send all Button information
 @app.route('/init')
+@cross_origin()
 def init():
     return str(Button.format())
 
 # Render general data  API
 @app.route('/filter_page', methods = ["GET", "POST"])
+@cross_origin()
 def filter_page():
 
     # cursor object to access DB
