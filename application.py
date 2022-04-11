@@ -40,7 +40,9 @@ button_list = [
     'AllTime',
     'Morning',
     'Afternoon',
-    'Evening'
+    'Evening',
+    'RolePlay',
+    'Board',
 ]
 
 for i, btn in enumerate(button_list):
@@ -48,8 +50,10 @@ for i, btn in enumerate(button_list):
         exec(f"b{btn} = Button('{btn}', 'Activity_type')")
     if i > 4 and i < 10:
         exec(f"b{btn} = Button('{btn}', 'Location')")
-    if i > 9:
+    if i > 9 and i < 14:
         exec(f"b{btn} = Button('{btn}', 'Time')")
+    if i > 13:
+        exec(f"b{btn} = Button('{btn}', 'Activity_semi_type')")
 
 class DateTimeEncoder(JSONEncoder):
         #Override the default method
@@ -178,7 +182,7 @@ def filter_page():
     }
     response_template['TotalPage'] = total_pages
     response_template['PageNum'] = 0 if total_pages == 0 else page_num
-    response_template['Data'] = Button.get_data(cur, page_num, page_size)
+    response_template['Data'] = Button.get_data(cur, (page_num - 1) * page_size, page_size)
 
     return Response(json.dumps(response_template, cls=DateTimeEncoder), headers={"Access-Control-Allow-Origin":"http://gathero.ga"})
 

@@ -44,7 +44,7 @@ class Query:
             cond_string = ""
 
         # Generate Query in object attributes
-        query = f"SELECT {col_string} " +\
+        query = f"SELECT distinct {col_string} " +\
                 "FROM events e, activities a, locations l " + \
                 f"where e.activity_id = a.activity_id and e.location_id = l.location_id{cond_string} limit {num}, {pgs};"
         self.query = query
@@ -124,7 +124,9 @@ class Button:
     def get_data(cur, pgn, pgs):
         conditions = {}
         [conditions.update(Button.sql_dict[key.name]) for key, value in Button.clicked_dict.items() if value]
-        result = Query(cur).generate_query(conds=conditions, num=pgn, pgs=pgs).run()
+        result = Query(cur).generate_query(conds=conditions, num=pgn, pgs=pgs)
+        print(result)
+        result = result.run()
         return json.loads(result)
 
     # Formats the data for the front end
